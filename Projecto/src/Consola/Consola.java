@@ -10,6 +10,9 @@ public class Consola {
 	public static void main(String[] args){
 		Reader lector=new Reader();
 		lector.cargarRecords(archivo);
+	
+		
+		
 		
 	}
 
