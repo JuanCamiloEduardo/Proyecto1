@@ -9,12 +9,7 @@ import java.util.ArrayList;
 public class Pensum {
 	private ArrayList<InformacionMateria> MateriasPensum;
 	private int CreditosCBUS=14;
-	private int CBUColombia=2;
-	private int Humanidades=2;
-	private int Colombia=2;
-	private int Pensamiento=2;
-	private int TipoE=4;
-	private int TipoEpsilon=2;
+
 	private int Ingles=12;
 	private int SegundaLengua=20;
 	
@@ -24,24 +19,7 @@ public class Pensum {
 	public int getCreditosCBUS() {
 		return CreditosCBUS;
 	}
-	public int getCBUColombia() {
-		return CBUColombia;
-	}
-	public int getHumanidades() {
-		return Humanidades;
-	}
-	public int getColombia() {
-		return Colombia;
-	}
-	public int getPensamiento() {
-		return Pensamiento;
-	}
-	public int getTipoE() {
-		return TipoE;
-	}
-	public int getTipoEpsilon() {
-		return TipoEpsilon;
-	}
+
 	public int getIngles() {
 		return Ingles;
 	}

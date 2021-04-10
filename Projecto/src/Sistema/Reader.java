@@ -26,27 +26,19 @@ public class Reader {
 				String linea = br.readLine();
 				while (linea != null)
 				{
-					String[] partes = linea.split("-");
+					String[] partes = linea.split("/");
 					int Creditos = Integer.parseInt(partes[0]);
 					String Nombre = partes[1];
 					String Codigo = partes[2];
-					String Descripcion = partes[3];
-					String Prerrequisitos = partes[4];
+					String Prerrequisitos = partes[3];
 					String[] ListaPrerrequisitos=Prerrequisitos.split(",");
 					ListaPrerrequisitos=Prerrequisitos.split(",");
-					String Correquisitos = partes[5];
+					String Correquisitos = partes[4];
 					String[] ListaCorrequisitos=Correquisitos.split(",");
 					ListaCorrequisitos=Correquisitos.split(",");
-					int Duracion= Integer.parseInt(partes[6]);
-					boolean CTipoE=Boolean.parseBoolean(partes[7]);
-					boolean CTipoEpsilon=Boolean.parseBoolean(partes[8]);
-					boolean Ingles=Boolean.parseBoolean(partes[9]);
-					boolean SegundaLengua=Boolean.parseBoolean(partes[10]);
-					boolean CBUColombia=Boolean.parseBoolean(partes[11]);
-					boolean Humanidades=Boolean.parseBoolean(partes[12]);
-					boolean Pensamiento=Boolean.parseBoolean(partes[13]);
-					boolean Colombia=Boolean.parseBoolean(partes[14]);
-					InformacionMateria Materia= new InformacionMateria(Creditos,Nombre,Codigo,Descripcion, ListaPrerrequisitos,ListaCorrequisitos,Duracion,CTipoE,CTipoEpsilon,Ingles,SegundaLengua,CBUColombia,Humanidades,Pensamiento,Colombia);
+					int Duracion= Integer.parseInt(partes[5]);
+					
+					InformacionMateria Materia= new InformacionMateria(Creditos,Nombre,Codigo, ListaPrerrequisitos,ListaCorrequisitos,Duracion);
 					Pensum.add(Materia);
 					linea = br.readLine();
 				}
