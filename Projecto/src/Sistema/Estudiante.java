@@ -115,7 +115,7 @@ public class Estudiante {
 		int contador=0;
 		
 		
-		ArrayList<InformacionMateria>  CbusAprobados =new ArrayList<InformacionMateria> ();
+		ArrayList<InformacionMateria>  CbusAprobados =verificarCbus (MateriasPasadas);
 		if (CbusAprobados.size()<7 ) {
 			Rcbus= false;
 		}

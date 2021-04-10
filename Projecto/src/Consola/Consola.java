@@ -141,8 +141,7 @@ public class Consola {
 			{			MateriasEstudiante.add(Escritura2LT);
 
 			}
-			
-			
+
 			else if( Codigo.equals("LENG-1511") )
 			{			MateriasEstudiante.add(Escritura1LE);
 
