@@ -104,13 +104,14 @@ public class Estudiante {
 		
 	}
 
-	public boolean cumplioCbus (ArrayList<InformacionMateria> MateriasPasadas) {
+	public boolean cumplioCbus () {
 		boolean cbucientifico=false;
-		boolean cbuObligatorioCol=false;
 		boolean cbuColombia=false;
 		boolean cbuHumanidades=false;
 		boolean cbuEpsilon=false;
 		boolean cbuTipoE=false;
+		boolean Emaq=false;
+		boolean cele=false;
 		int contador=0;
 		
 		
@@ -121,14 +122,12 @@ public class Estudiante {
 		else if (CbusAprobados.size()>6 ) {
 				for (int j = 0; j <CbusAprobados.size(); j++)
 				{	InformacionMateria curso =CbusAprobados.get(j);
-					if (curso.getCodigo().equals("CBCC-1177")){
-						cbuObligatorioCol= true;
-					}
+
 					
 					
 					if(curso.getCodigo().contains("CBCO-")) {
 						cbuColombia=true;
-						
+						System.out.print("Hay un CBCO");
 					}
 					
 					if(curso.getCodigo().contains("CBPC-")) {
@@ -141,6 +140,14 @@ public class Estudiante {
 					}
 					if(curso.getCodigo().contains("CBCA-")) {
 						cbuHumanidades=true;
+						
+					}
+					if(curso.getCodigo().contains("EMQB-")) {
+						Emaq=true;
+						
+					}
+					if(curso.getCodigo().contains("CELE-")) {
+						cele=true;
 						
 					}
 					if(curso.getCodigo().contains("TPOE-")) {
@@ -158,7 +165,7 @@ public class Estudiante {
 				}
 				
 				
-		if (cbucientifico==true&& cbuObligatorioCol==true&& cbuHumanidades==true  && cbuColombia==true  &&  cbuTipoE==true &&cbuEpsilon==true) {
+		if (cbucientifico==true&&  cbuHumanidades==true  && cbuColombia==true  &&  cbuTipoE==true &&cbuEpsilon==true && cele==true && Emaq==true) {
 			
 			Rcbus= true;
 			

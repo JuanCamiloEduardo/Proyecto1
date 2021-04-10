@@ -42,9 +42,10 @@ public class Consola {
 			{
 				Pensum Sistemas=new Pensum(ListadoMaterias);
 				Estudiante Alumno=CodigoMaterias(Sistemas);
+				System.out.print("Opcion 2");
+				String Opcion2=sc.nextLine();
 				
-			
-			 if (AccionEstudiante.equals("2")) 
+			 if (Opcion2.equals("2")) 
 			{
 				
 			}
@@ -52,9 +53,10 @@ public class Consola {
 			{
 				
 			}
-			else if (AccionEstudiante.equals("4")) 
+			else if (Opcion2.equals("4")) 
 			{
 				Alumno.verificarAvance(Sistemas);
+				Alumno.cumplioCbus();
 				
 			}
 			else if (AccionEstudiante.equals("5")) 
@@ -118,7 +120,7 @@ public class Consola {
 
 
 		Scanner sc = new Scanner (System.in);
-		System.out.print("Digite los codigos de las materias que ha visto separadas por coma  (MATE-1203,MATE-1145,....)");
+		System.out.print("Digite los codigos de las materias que ha visto separadas por coma  (MATE-1203,MATE-1145,....) ");
 		String Codigos=sc.nextLine();
 		String[] ListaCodigos=Codigos.split(",");
 		ArrayList<InformacionMateria> MateriasEstudiante=new ArrayList<InformacionMateria>() ;
