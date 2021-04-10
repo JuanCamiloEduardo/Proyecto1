@@ -40,9 +40,13 @@ public class Consola {
 			
 			if (AccionEstudiante.equals("1")) 
 			{
+				ArrayList<String> nuevo= new ArrayList<String>();
+				nuevo.add("hola");
+				nuevo.add("hola");
+				System.out.println(nuevo);
 				Pensum Sistemas=new Pensum(ListadoMaterias);
 				Estudiante Alumno=CodigoMaterias(Sistemas);
-				System.out.print("Opcion 2");
+				System.out.print("Opcion 4");
 				String Opcion2=sc.nextLine();
 				
 			 if (Opcion2.equals("2")) 
@@ -61,6 +65,7 @@ public class Consola {
 			}
 			else if (AccionEstudiante.equals("5")) 
 			{
+				
 				repetidor=true;
 			}
 			else if (AccionEstudiante.equals("6")) 
@@ -130,8 +135,9 @@ public class Consola {
 		int i = 0;
 		while (i < ListaCodigos.length)
 		{
-		if (Codigo.equals(ListaCodigos[i])) 
+		if (Codigo.equals(ListaCodigos[i])||ListaCodigos[i].substring(0,5).equals(Codigo))
 		{
+			
 			if( Codigo.equals("LITE-1621") )
 			{			MateriasEstudiante.add(Escritura1LT);
 

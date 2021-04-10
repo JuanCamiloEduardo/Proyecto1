@@ -89,17 +89,19 @@ public class Estudiante {
 	
 	public ArrayList<InformacionMateria> verificarCbus( ArrayList<InformacionMateria> MateriasPasadas) {
 		ArrayList<InformacionMateria> CbusAprobados= new ArrayList<InformacionMateria> ();
-		for (int j = 0; j < MateriasPasadas.size(); j++)
+		for (int K = 0; K < MateriasPasadas.size(); K++)
 		{
 			
-		String Codigo =MateriasPasadas.get(j).getCodigo();
-		if (Codigo.substring(0,1)== "CB"){
-				CbusAprobados.add(MateriasPasadas.get(j));
-		}
+		String Codigo =MateriasPasadas.get(K).getCodigo();
 		
-		
-		j++; 
+		System.out.println(Codigo);
+		if (Codigo.substring(0,2).equals("CB")||Codigo.substring(0,4).equals("TPOE")||Codigo.substring(0,4).equals("EPSI")){
+				CbusAprobados.add(MateriasPasadas.get(K));
+				System.out.println("agrego cbu");
+				
 		}
+		}
+		System.out.println(CbusAprobados);
 		return CbusAprobados;
 		
 	}
@@ -116,10 +118,10 @@ public class Estudiante {
 		
 		
 		ArrayList<InformacionMateria>  CbusAprobados =verificarCbus (MateriasPasadas);
-		if (CbusAprobados.size()<7 ) {
+		if (CbusAprobados.size()<6 ) {
 			Rcbus= false;
 		}
-		else if (CbusAprobados.size()>6 ) {
+		else if (CbusAprobados.size()>5 ) {
 				for (int j = 0; j <CbusAprobados.size(); j++)
 				{	InformacionMateria curso =CbusAprobados.get(j);
 
@@ -127,7 +129,7 @@ public class Estudiante {
 					
 					if(curso.getCodigo().contains("CBCO-")) {
 						cbuColombia=true;
-						System.out.print("Hay un CBCO");
+						System.out.print("Hay un CBCO ");
 					}
 					
 					if(curso.getCodigo().contains("CBPC-")) {
@@ -142,14 +144,7 @@ public class Estudiante {
 						cbuHumanidades=true;
 						
 					}
-					if(curso.getCodigo().contains("EMQB-")) {
-						Emaq=true;
-						
-					}
-					if(curso.getCodigo().contains("CELE-")) {
-						cele=true;
-						
-					}
+				
 					if(curso.getCodigo().contains("TPOE-")) {
 						contador+=1;
 						if (contador >1){
@@ -165,10 +160,10 @@ public class Estudiante {
 				}
 				
 				
-		if (cbucientifico==true&&  cbuHumanidades==true  && cbuColombia==true  &&  cbuTipoE==true &&cbuEpsilon==true && cele==true && Emaq==true) {
+		if (cbucientifico==true&&  cbuHumanidades==true  && cbuColombia==true  &&  cbuTipoE==true &&cbuEpsilon==true ) {
 			
 			Rcbus= true;
-			
+			System.out.println(Rcbus);
 		}
 		
 		
