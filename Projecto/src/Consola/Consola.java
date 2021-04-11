@@ -28,7 +28,7 @@ public class Consola {
 		if(Opcion.equals("1")) 
 		{   
 			System.out.print("Registre sus cursos \n");
-			System.out.print("Exepciones \nEstas son para que el programa pueda comprender a que tipo de materia se refiere \nEl curso de Escritura Universitaria 1 y 2 se hacen bajo el codigo LENG-1511 y LENG-1512 \nPara los cursos de Libre Eleccion se hace bajo el codigo CELE-Numero \nPara los Cursos y CBUS Tipo Epsilon y Tipo E escribirlo como EPSI-Numero y TPOE-Numero \n");
+			System.out.print("Exepciones \nEstas son para que el programa pueda comprender a que tipo de materia se refiere \nEl curso de Escritura Universitaria 1 y 2 se hacen bajo el codigo LENG-1511 y LENG-1512 \nPara los cursos de Libre Eleccion se hace bajo el codigo CELE-Numero \nPara los Cursos y CBUS Tipo Epsilon y Tipo E escribirlo como EPSI-Numero y TPOE-Numero \nPara la electiva de matematicas,biologia y quimica se hace bajo EMBQ\nSi ya aprobo el curso de LENG-1156 o presento y valido un examen externo  para cumplir el requisito de Lectura de Ingles digite el codigo LENG-2999\nSi ya aprobo algun curso de idiomas nivel 10 o presento y valido un examen externo  para cumplir el requisito de Segunda Lengua digite el codigo LENG-3999\n");
 			Reader lector=new Reader();
 			ArrayList<InformacionMateria> ListadoMaterias=lector.cargarRecords(archivo);
 			ArrayList<String> nuevo= new ArrayList<String>();
@@ -72,6 +72,7 @@ public class Consola {
 						double[] Valores= RegistroNotas(Semestre,TituloSemestre);
 						double PromedioAcumulado=Valores[0];
 						double Creditos=Valores[1];
+	
 						TotalPromedioAcumulado+=PromedioAcumulado;
 						TotalCreditos+=Creditos;
 						
@@ -88,6 +89,7 @@ public class Consola {
 				boolean Ingles=Alumno.Ingles();
 				boolean SegundaLengua=Alumno.SegundoLenguaje();
 				boolean CURSOLIBRE=Alumno.cumpleCele();
+
 				if (MateriasFaltantes && CBUS && Ingles && SegundaLengua && CURSOLIBRE)
 				{
 					System.out.print("El estudiante es candidato a grado \n");
@@ -277,10 +279,6 @@ public class Consola {
 	public static Estudiante CodigoMaterias(Pensum materiasPensum) 
 	
 	{   String[] listavacia = new String[0];
-		InformacionMateria Escritura1LE=new InformacionMateria(2,"Escritura Universitaria 1","LITE-1621",listavacia,listavacia,8,1,0.0);
-		InformacionMateria Escritura2LE=new InformacionMateria(2,"Escritura Universitaria 2","LITE-1622",listavacia,listavacia,8,1,0.0);
-		InformacionMateria Escritura1LT=new InformacionMateria(2,"Escritura Universitaria 1","LENG-1511",listavacia,listavacia,8,1,0.0);
-		InformacionMateria Escritura2LT=new InformacionMateria(2,"Escritura Universitaria 1","LENG-1512",listavacia,listavacia,8,1,0.0);
 		InformacionMateria BiologiaCelular=new InformacionMateria(3,"Biología Celular","MBIO-1100",listavacia,listavacia,16,4,0);
 		InformacionMateria Quimica=new InformacionMateria(3,"QUIMICA","QUIM-1103",listavacia,listavacia,16,4,0);
 		String[] ListaP=new String[1];
@@ -307,67 +305,21 @@ public class Consola {
 			String[] UbicacionCodigo=ListaCodigos[i].split(":");
 		if (Codigo.equals(UbicacionCodigo[0])||UbicacionCodigo[0].substring(0,5).equals(Codigo))
 		{
-			if( Codigo.equals("LENG-1511") )
-			{			
-				Escritura1LT.setNota(Double.parseDouble(UbicacionCodigo[2]));
-				Escritura1LT.setSemestre(Integer.parseInt(UbicacionCodigo[1]));
-				MateriasEstudiante.add(Escritura1LT);
-
-			}
-			else if( Codigo.equals("LENG-1512") )
-				
-			{	
-				Escritura2LE.setNota(Double.parseDouble(UbicacionCodigo[2]));
-				Escritura2LE.setSemestre(Integer.parseInt(UbicacionCodigo[1]));
-				MateriasEstudiante.add(Escritura2LE);
-
-			}
-			
-			if( Codigo.equals("LITE-1622") )
-				
-			{			
-				Escritura2LT.setNota(Double.parseDouble(UbicacionCodigo[2]));
-				Escritura2LT.setSemestre(Integer.parseInt(UbicacionCodigo[1]));
-				MateriasEstudiante.add(Escritura2LT);
-
-			}
-
-			else if( Codigo.equals("LITE-1621") )
-			{	
-				Escritura1LE.setNota(Double.parseDouble(UbicacionCodigo[2]));		
-				Escritura1LE.setSemestre(Integer.parseInt(UbicacionCodigo[1]));
-				MateriasEstudiante.add(Escritura1LE);
-
-			}
-
-			if( Codigo.equals("MBIO-1100") )
-			{
-				Quimica.setNota(Double.parseDouble(UbicacionCodigo[2]));
-				Quimica.setSemestre(Integer.parseInt(UbicacionCodigo[1]));
-				MateriasEstudiante.add(Quimica);}
-			else if (Codigo.equals("QUIM-1103")) {
-				BiologiaCelular.setNota(Double.parseDouble(UbicacionCodigo[2]));
-				BiologiaCelular.setSemestre(Integer.parseInt(UbicacionCodigo[1]));
-				MateriasEstudiante.add(BiologiaCelular);}
-			if (Codigo.equals("ISIS-3710")) {
-				SistemasEmpresariales.setNota(Double.parseDouble(UbicacionCodigo[2]));
-				SistemasEmpresariales.setSemestre(Integer.parseInt(UbicacionCodigo[1]));
-				MateriasEstudiante.add(SistemasEmpresariales);}
-			else if (Codigo.equals("ISIS-3425")) {
-				ProgramacionConTecnologiasWeb.setNota(Double.parseDouble(UbicacionCodigo[2]));
-				ProgramacionConTecnologiasWeb.setSemestre(Integer.parseInt(UbicacionCodigo[1]));
-				MateriasEstudiante.add(ProgramacionConTecnologiasWeb);
-
-			}
 		InformacionMateria CambioNota=materiasPensum.getMateriasPensum().get(j);
-
 		CambioNota.setNota(Double.parseDouble(UbicacionCodigo[2]));
 		CambioNota.setSemestre(Integer.parseInt(UbicacionCodigo[1]));
+		if( Codigo.equals("MBIO-1100") )
+		{
+			MateriasEstudiante.add(Quimica);}
+		else if (Codigo.equals("QUIM-1103")) {
+			MateriasEstudiante.add(BiologiaCelular);}
+		if (Codigo.equals("ISIS-3710")) {
+			MateriasEstudiante.add(SistemasEmpresariales);}
+		else if (Codigo.equals("ISIS-3425")) {
+			MateriasEstudiante.add(ProgramacionConTecnologiasWeb);
+		}
 		MateriasEstudiante.add(CambioNota);
 		
-
-			
-			
 		}
 		i++; 
 	
