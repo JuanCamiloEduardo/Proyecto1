@@ -206,8 +206,10 @@ public class Estudiante {
 	public boolean verificarAvance(Pensum MateriasPensum){
 		
 			ArrayList<String> codigosaprobados= new ArrayList<String>() ;
+			
 			for (int i = 0;  i<MateriasPasadas.size(); i++)
 			{	
+				
 				String Codigo =MateriasPensum.getMateriasPensum().get(i).getCodigo();
 				codigosaprobados.add(Codigo);
 			}
@@ -220,9 +222,10 @@ public class Estudiante {
 			for (int j = 0; j <MateriasPensum.getMateriasPensum().size(); j++)
 			{	
 				String Codigo =MateriasPensum.getMateriasPensum().get(j).getCodigo();
-				 if (!codigosaprobados.contains(Codigo)) {
+				 if (!codigosaprobados.contains(Codigo)) 
+				 {
 					 cumple=false;
-					 System.out.println("Hace falta materia:"+Codigo+"\n");
+					 System.out.println("Hace falta la materia:"+Codigo+"\n");
 				 }
 				
 				

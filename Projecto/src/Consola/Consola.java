@@ -26,36 +26,44 @@ public class Consola {
 		System.out.print("Hola ,digite que tipo de usuario es estudiante(1) o cordinador(2) \n");
 		String Opcion=sc.nextLine();
 		if(Opcion.equals("1")) 
-		{
-			System.out.print("Que accion quiere realizar \n");
-			System.out.print("1-Registrar cursos \n");
-			System.out.print("2-Planear cursos \n");
-			System.out.print("3-Mirar reporte de nota \n");
-			System.out.print("4-Soy candidato a grado \n");
-			System.out.print("5-Volver al menu principal \n");
-			System.out.print("6-Cerrar aplicacion \n");
-			String AccionEstudiante=sc.nextLine();
+		{   
+			System.out.print("Registre sus cursos \n");
 			Reader lector=new Reader();
 			ArrayList<InformacionMateria> ListadoMaterias=lector.cargarRecords(archivo);
-			
-			if (AccionEstudiante.equals("1")) 
+			ArrayList<String> nuevo= new ArrayList<String>();
+			Pensum Sistemas=new Pensum(ListadoMaterias);
+			Estudiante Alumno=CodigoMaterias(Sistemas);
+			boolean repetidor2=true;
+			do {
+			System.out.print("---------------------------------------------");
+			System.out.print("---------------------------------------------");
+			System.out.print("Que accion quiere realizar \n");
+			System.out.print("1-Planear cursos \n");
+			System.out.print("2-Mirar reporte de nota \n");
+			System.out.print("3-Soy candidato a grado \n");
+			System.out.print("4-Cerrar aplicacion \n");
+			System.out.print("---------------------------------------------");
+			System.out.print("---------------------------------------------");
+			String Opcion2=sc.nextLine();
+
+			 if (Opcion2.equals("1")) 
 			{
-				ArrayList<String> nuevo= new ArrayList<String>();
-				Pensum Sistemas=new Pensum(ListadoMaterias);
-				Estudiante Alumno=CodigoMaterias(Sistemas);
-				System.out.print("Opcion 4");
-				String Opcion2=sc.nextLine();
-				
-			 if (Opcion2.equals("2")) 
-			{
-				
+				 System.out.print("Utilize el siguiente formato para planear materias (MATE-1203,MATE-1503,.....)");
+				 String CargarMaterias=sc.nextLine();
+				 String[] ListaCodigos=CargarMaterias.split(",");
+				 ArrayList<String> Codigos= new  ArrayList<String>();
+				 for (int k = 0; k < ListaCodigos.length; k++)
+				 {
+					 Codigos.add(ListaCodigos[k]);
+				 }
+				 planearhorario(Alumno.getMateriasPasadas(),Sistemas.getMateriasPensum(),Codigos);
 			}
-			else if (Opcion2.equals("3")) {
+			else if (Opcion2.equals("2")) {
+					
 					ArrayList<InformacionMateria> Copia=CopiaryEliminar(Alumno.getMateriasPasadas());
 					double TotalPromedioAcumulado=0;
 					double TotalCreditos=0;
 					ArrayList<ArrayList> ListaSemestres=AgregarSemestre(Alumno);
-					
 					for (int i = 0; i <ListaSemestres.size(); i++)
 					{
 						ArrayList<InformacionMateria> Semestre=ListaSemestres.get(i);
@@ -72,7 +80,7 @@ public class Consola {
 					Devolver(Copia,Alumno);
 			}
 			
-			else if (Opcion2.equals("4")) 
+			else if (Opcion2.equals("3")) 
 			{
 				boolean MateriasFaltantes=Alumno.verificarAvance(Sistemas);
 				boolean CBUS= Alumno.cumplioCbus();
@@ -90,38 +98,86 @@ public class Consola {
 				}
 				
 			}
-			else if (AccionEstudiante.equals("5")) 
+			else if (Opcion2.equals("4")) 
 			{
 				
-				repetidor=true;
-			}
-			else if (AccionEstudiante.equals("6")) 
-			{
 				repetidor=false;
+				repetidor2=false;
 			}
-		}}
+			}while(repetidor2);
+			}
 		else if(Opcion.equals("2"))
-		{
+		{ 
+			boolean repetidor3=true;
+			do {
+		
 			System.out.print("Que accion quiere realizar \n");
 			System.out.print("1-Revisar avance estudiante \n");
-			System.out.print("2-Volver al menu principal \n");
-			System.out.print("3-Cerrar aplicacion");
+			System.out.print("2-Cerrar aplicacion");
 			String AccionCordinador=sc.nextLine();
 			if(AccionCordinador.equals("1"))
 			{
 				
 			}
-			else if (AccionCordinador.equals("2"))
-			{
-				repetidor=true;
-			}
 			else if (AccionCordinador.equals("3"))
 			{
 				repetidor=false;
+				repetidor3=false;
 			}
+			}while(repetidor3);
 		}
+		
 	}while(repetidor);
 	}
+	
+	
+	
+	public static void planearhorario(ArrayList<InformacionMateria> materiasPasadas,ArrayList<InformacionMateria> Pensum,ArrayList<String> CodigosPlaneados  ) 
+	{
+        int contadorCorre=0;
+        for (int j = 0; j < CodigosPlaneados.size(); j++)
+        {
+            String codigoPlaneado = CodigosPlaneados.get(j);
+            for (int k = 0; k < Pensum.size(); k++)
+            {
+                if (Pensum.get(k).getCodigo().equals(codigoPlaneado))
+                {
+                    String[] Correquisitos=Pensum.get(k).getCorrequisitos();
+                    for (int l = 0; l< Pensum.size(); l++)
+                    {
+                        if (!CodigosPlaneados.contains( Correquisitos[l]))
+                        {
+                            contadorCorre+=1;
+                        for (int m = 0; m< materiasPasadas.size(); m++)
+                        {
+                            if (contadorCorre==0 &&(materiasPasadas.get(m).getCodigo().equals(Correquisitos[l]))) {
+                                System.out.println("Puede ver por correquisitos"+codigoPlaneado);
+                            }
+                            else{
+                                System.out.println("No cumple Coerrequistos le hace falta ver:"+codigoPlaneado);
+                            }
+                        }
+
+                    String[] Prerrequisitos=Pensum.get(k).getPrerequisitos();
+
+                    for (int n = 0; n< materiasPasadas.size(); n++)
+                    {
+                        if (materiasPasadas.get(n).getCodigo().equals(Correquisitos[l])) {
+                            System.out.println("Puede ver por Prerrequisitos"+codigoPlaneado);
+                        }
+                        else{
+                            System.out.println("No cumple Prerrequistos le hace falta ver:"+codigoPlaneado);
+                        }
+                    }
+                }
+                    }}
+    }
+    }
+}
+
+	
+	
+	
 	public static ArrayList<ArrayList> AgregarSemestre(Estudiante Alumno)
 	{	
 		
@@ -156,15 +212,12 @@ public class Consola {
 	}
 	public static ArrayList<InformacionMateria> CopiaryEliminar  (ArrayList<InformacionMateria> MateriasPasadas)
 	{
-		System.out.print("ACA");
 		ArrayList<InformacionMateria> Copia= new ArrayList<InformacionMateria>();
 		for (int j = 0; j <MateriasPasadas.size(); j++)
 		{
 			double Nota= MateriasPasadas.get(j).getNota();
-			System.out.print(Nota);
 			if (Nota==0.0)
 			{
-				System.out.print(MateriasPasadas.get(j).getNombre());
 				InformacionMateria CopiaInfo =MateriasPasadas.get(j);
 				Copia.add(CopiaInfo);
 				MateriasPasadas.remove(j);
@@ -227,17 +280,13 @@ public class Consola {
 		ListaS[0]="ISIS-2403";
 		InformacionMateria ProgramacionConTecnologiasWeb=new InformacionMateria(3,"ProgramaciónConTecnologíasWeb","ISIS-3710",ListaP,listavacia,16,6,0);
 		InformacionMateria SistemasEmpresariales=new InformacionMateria(3,"Sistemas Empresariales","ISIS3425",ListaS,listavacia,16,6,0);
+        ////Creamos unas materias para cumplir el pensum
 		
-		
-		
-		
-
-
 		Scanner sc = new Scanner (System.in);
 		System.out.print("Digite los codigos de las materias que ha visto separadas por coma  (MATE-1203:Semestre:Nota,MATE-1504:Semestre:Nota,....) ");
 		String Codigos=sc.nextLine();
 		String[] ListaCodigos=Codigos.split(",");
-
+		///Obtenemos una lista de este tipo["MATE-1203:Semestre:Nota","MATE-1504:Semestre:Nota","MATE-1804:Semestre:Nota"]
 		ArrayList<InformacionMateria> MateriasEstudiante=new ArrayList<InformacionMateria>() ;
 		for (int j = 0; j < materiasPensum.getMateriasPensum().size(); j++)
 		{
@@ -249,7 +298,6 @@ public class Consola {
 			String[] UbicacionCodigo=ListaCodigos[i].split(":");
 		if (Codigo.equals(UbicacionCodigo[0])||UbicacionCodigo[0].substring(0,5).equals(Codigo))
 		{
-			/*
 			if( Codigo.equals("LENG-1511") )
 			{			
 				Escritura1LT.setNota(Double.parseDouble(UbicacionCodigo[2]));
@@ -257,8 +305,16 @@ public class Consola {
 				MateriasEstudiante.add(Escritura1LT);
 
 			}
+			else if( Codigo.equals("LENG-1512") )
+				
+			{	
+				Escritura2LE.setNota(Double.parseDouble(UbicacionCodigo[2]));
+				Escritura2LE.setSemestre(Integer.parseInt(UbicacionCodigo[1]));
+				MateriasEstudiante.add(Escritura2LE);
+
+			}
 			
-			else if( Codigo.equals("LITE-1622") )
+			if( Codigo.equals("LITE-1622") )
 				
 			{			
 				Escritura2LT.setNota(Double.parseDouble(UbicacionCodigo[2]));
@@ -274,15 +330,8 @@ public class Consola {
 				MateriasEstudiante.add(Escritura1LE);
 
 			}
-			else if( Codigo.equals("LENG-1512") )
-				
-			{	
-				Escritura2LE.setNota(Double.parseDouble(UbicacionCodigo[2]));
-				Escritura2LE.setSemestre(Integer.parseInt(UbicacionCodigo[1]));
-				MateriasEstudiante.add(Escritura2LE);
 
-			}
-			else if( Codigo.equals("MBIO-1100") )
+			if( Codigo.equals("MBIO-1100") )
 			{
 				Quimica.setNota(Double.parseDouble(UbicacionCodigo[2]));
 				Quimica.setSemestre(Integer.parseInt(UbicacionCodigo[1]));
@@ -291,7 +340,7 @@ public class Consola {
 				BiologiaCelular.setNota(Double.parseDouble(UbicacionCodigo[2]));
 				BiologiaCelular.setSemestre(Integer.parseInt(UbicacionCodigo[1]));
 				MateriasEstudiante.add(BiologiaCelular);}
-			else if (Codigo.equals("ISIS-3710")) {
+			if (Codigo.equals("ISIS-3710")) {
 				SistemasEmpresariales.setNota(Double.parseDouble(UbicacionCodigo[2]));
 				SistemasEmpresariales.setSemestre(Integer.parseInt(UbicacionCodigo[1]));
 				MateriasEstudiante.add(SistemasEmpresariales);}
@@ -300,7 +349,7 @@ public class Consola {
 				ProgramacionConTecnologiasWeb.setSemestre(Integer.parseInt(UbicacionCodigo[1]));
 				MateriasEstudiante.add(ProgramacionConTecnologiasWeb);
 
-			}*/
+			}
 		InformacionMateria CambioNota=materiasPensum.getMateriasPensum().get(j);
 		CambioNota.setNota(Double.parseDouble(UbicacionCodigo[2]));
 		CambioNota.setSemestre(Integer.parseInt(UbicacionCodigo[1]));
@@ -316,7 +365,6 @@ public class Consola {
 		
 		}
 		Estudiante alumno=new Estudiante(MateriasEstudiante);
-		System.out.println(MateriasEstudiante.toString());
 		return alumno;	
 	}
 	
