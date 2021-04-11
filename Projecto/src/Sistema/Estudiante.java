@@ -1,6 +1,6 @@
 package Sistema;
 import java.util.ArrayList;
-public class Estudiante {
+public class Estudiante extends Usuario {
 	private boolean RIngles;
 	private boolean RSegundoLenguaje;
 	private boolean Rcbus;
@@ -21,6 +21,9 @@ public class Estudiante {
 	}
 	
 	public boolean Ingles( ) {
+		/*
+		Mira si cumple con los requisitos de Ingles
+		*/
 		RIngles=false;
 		for (int j = 0; j < MateriasPasadas.size(); j++)
 		{
@@ -48,6 +51,9 @@ public class Estudiante {
 	}
 	
 	public boolean SegundoLenguaje( ) {
+		/*
+		Mira si cumple con los requisitos de Segundo Lenguaje
+		*/
 		RSegundoLenguaje=false;
 		for (int j = 0; j < MateriasPasadas.size(); j++)
 		{
@@ -74,6 +80,9 @@ public class Estudiante {
 
 	
 	public ArrayList<InformacionMateria> verificarCbus( ) {
+		/*
+		Crea una lista para separar los cbus que ha visto y poder luego saber su tamaño y trabajar en ellos
+		*/
 		ArrayList<InformacionMateria> CbusAprobados= new ArrayList<InformacionMateria> ();
 		for (int K = 0; K < MateriasPasadas.size(); K++)
 		{
@@ -89,7 +98,9 @@ public class Estudiante {
 		
 	}
 	public boolean cumpleCele() 
-	{	
+	{	/*
+	Mira si cumple con los requisitos de Curso de Libre eleccion
+	*/
 		RELECTIVAS=false;
 		int contador=0;
 		for (int K = 0; K < MateriasPasadas.size(); K++)
@@ -119,6 +130,11 @@ public class Estudiante {
 	}
 
 	public boolean cumplioCbus () {
+		/*
+		
+	Mira si cumple con los requisitos de CBUS y ser un candidato a grado
+	
+		 */
 		Rcbus=false;
 		boolean cbucientifico=false;
 		boolean uno=false;
@@ -334,7 +350,9 @@ public class Estudiante {
 	}
 	
 	public boolean verificarAvance(Pensum MateriasPensum){
-		
+		/*
+		Mira si cumple con el pensum de la carrera que ha introducido 
+		*/
 			ArrayList<String> codigosaprobados= new ArrayList<String>() ;
 			
 			for (int i = 0;  i<MateriasPasadas.size(); i++)

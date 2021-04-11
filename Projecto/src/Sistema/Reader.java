@@ -16,6 +16,9 @@ public class Reader {
 	
 	public ArrayList<InformacionMateria> cargarRecords(File archivo)
 	{
+		/*
+		Esta funcion es la que se encarga de crear el Pensum del estudiante ,se utiliza un archivo el cual contiene las materias que vera para su carrera
+		*/
 		ArrayList<InformacionMateria> Pensum =new ArrayList<InformacionMateria> ();
 		if (archivo.exists())
 		{

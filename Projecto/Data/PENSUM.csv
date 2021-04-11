@@ -11,13 +11,13 @@
 3/Física 1/FISI-1018//FISI-1019,MATE-1203/16/2/0
 3/Cálculo Integral y Ecuaciones Diferenciales/MATE-1214/MATE-1203//16/2/0
 3/Matemática Estructural y Lógica/ISIS-1104/ISIS-1221//16/2/0
-3/Estructuras de Datos y Algorítmos/ISIS-1225 /ISIS-1221//16/2/0
+3/Estructuras de Datos y Algorítmos/ISIS-1225/ISIS-1221//16/2/0
 1/Física Experimental 2/FISI-1029/FISI-1019/FISI-1028/16/3/0
 3/Física 2/FISI-1028/FISI-1018,MATE-1203/FISI-1029,MATE-1214/16/3/0
-3/Algebra Lineal 1/MATE-1105 /MATE-1203//16/2/0/3/0
+3/Algebra Lineal 1/MATE-1105/MATE-1203//16/2/0/3/0
 3/Lenguajes y Máquinas/ISIS-1106/ISIS-1104,ISIS-1225/LENG-1511,LITE-1621/16/2/0/3/0
 3/Diseño y Programación O.O./ISIS-1226/ISIS-1225//16/2/0/3/0
-3/Fundamentos de Infraestructura Tecnológica/ISIS-1304 /ISIS-1225//16/2/0/3/0
+3/Fundamentos de Infraestructura Tecnológica/ISIS-1304/ISIS-1225//16/2/0/3/0
 3/Biología Celular TEO/MBIO-1100///16/2/0/4/0
 3/Quimica/QUIM-1103///16/2/0/4/0/4/0
 3/Cálculo Vectorial/MATE-1207/MATE-1105,MATE-1214//16/2/0/4/0
@@ -27,7 +27,7 @@
 3/TI en las Organizaciones/ISIS-1404/ISIS-1221//16/4/0
 3/Análisis de Decisión e Inversión/IIND-2401/MATE-1105,ISIS-1001//16/5/0
 3/Probabilidad y Estadística/IIND-2106/MATE-1105,MATE-1214//16/5/0
-3/Diseño de Productos e Innovación en TI/ISIS-2007 /ISIS-2603,LENG-1156//16/5/0
+3/Diseño de Productos e Innovación en TI/ISIS-2007/ISIS-2603,LENG-1156//16/5/0
 3/Arquitectura y Diseño de SW/ISIS-2503/ISIS-2603//16/5/0
 3/Arquitectura Empresarial/ISIS-2403/ISIS-1404//16/5/0
 3/Infraestructura computacional /ISIS-2203/ISIS-1304//16/5/0
@@ -36,8 +36,8 @@
 3/Programación con tecnologías web/ISIS-3710/ISIS-2503//16/6/0
 3/Sistemas Empresariales/ISIS-3425/ISIS-2403//16/6/0
 3/Infraestructura de Comunicaciones/ISIS-3204/ISIS-2403,ISIS-1304//16/6/0
-3/Construcción de Aplicaciones Móviles/ISIS-3510/ISIS-2503, ISIS-3204//16/7/0
-3/Proyecto de Grado/ISIS-3007/ISIS-2403, ISIS-3204//16/7/0
+3/Construcción de Aplicaciones Móviles/ISIS-3510/ISIS-2503,ISIS-3204//16/7/0
+3/Proyecto de Grado/ISIS-3007/ISIS-2403,ISIS-3204//16/7/0
 2//CBCO-///8/0/0
 2//CBPC-///8/0/0
 2//EPSI-///8/0/0

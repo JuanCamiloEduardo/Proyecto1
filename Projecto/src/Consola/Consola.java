@@ -17,6 +17,7 @@ public class Consola {
 
 	public static void main(String[] args)
 	{
+		///Metodo Main aca se ejecutan las funciones para el estudiante y cordinador.
 		
 		boolean repetidor=false;
 
@@ -25,8 +26,11 @@ public class Consola {
 		Scanner sc = new Scanner (System.in);
 		System.out.print("Hola ,digite que tipo de usuario es estudiante(1) o cordinador(2) \n");
 		String Opcion=sc.nextLine();
-		if(Opcion.equals("1")) 
-		{   
+		try {
+		int transformacion=Integer.parseInt(Opcion);
+		
+		if(transformacion==1) 
+		{  	
 			System.out.print("Registre sus cursos \n");
 			System.out.print("Exepciones \nEstas son para que el programa pueda comprender a que tipo de materia se refiere \nEl curso de Escritura Universitaria 1 y 2 se hacen bajo el codigo LENG-1511 y LENG-1512 \nPara los cursos de Libre Eleccion se hace bajo el codigo CELE-Numero \nPara los Cursos y CBUS Tipo Epsilon y Tipo E escribirlo como EPSI-Numero y TPOE-Numero \nPara la electiva de matematicas,biologia y quimica se hace bajo EMBQ\nSi ya aprobo el curso de LENG-1156 o presento y valido un examen externo  para cumplir el requisito de Lectura de Ingles digite el codigo LENG-2999\nSi ya aprobo algun curso de idiomas nivel 10 o presento y valido un examen externo  para cumplir el requisito de Segunda Lengua digite el codigo LENG-3999\n");
 			Reader lector=new Reader();
@@ -34,8 +38,10 @@ public class Consola {
 			ArrayList<String> nuevo= new ArrayList<String>();
 			Pensum Sistemas=new Pensum(ListadoMaterias);
 			Estudiante Alumno=CodigoMaterias(Sistemas);
+
 			boolean repetidor2=true;
 			do {
+
 			System.out.print("--------------------------------------------- \n");
 			System.out.print("--------------------------------------------- \n");
 			System.out.print("Que accion quiere realizar \n");
@@ -46,8 +52,9 @@ public class Consola {
 			System.out.print("--------------------------------------------- \n");
 			System.out.print("---------------------------------------------\n");
 			String Opcion2=sc.nextLine();
+			int transformacion2=Integer.parseInt(Opcion2);
 
-			 if (Opcion2.equals("1")) 
+			 if (transformacion2==1) 
 			{
 				 System.out.print("Utilize el siguiente formato para planear materias (MATE-1203,MATE-1503,.....)");
 				 String CargarMaterias=sc.nextLine();
@@ -59,7 +66,7 @@ public class Consola {
 				 }
 			planearhorario(Alumno.getMateriasPasadas(),Sistemas.getMateriasPensum(),Codigos);
 			}
-			else if (Opcion2.equals("2")) {
+			else if (transformacion2==2) {
 					
 					ArrayList<InformacionMateria> Copia=CopiaryEliminar(Alumno.getMateriasPasadas());
 					double TotalPromedioAcumulado=0;
@@ -78,11 +85,16 @@ public class Consola {
 						
 					}
 					double NotaFinal=TotalPromedioAcumulado/TotalCreditos;
+					String hola=Double.toString(NotaFinal);
+					if (hola.equals("NaN")) 
+					{
+						 NotaFinal=0;
+					}
 					System.out.print("Total Promedio Acumulado "+NotaFinal +"\n");
 					Devolver(Copia,Alumno);
 			}
 			
-			else if (Opcion2.equals("3")) 
+			else if (transformacion2==3) 
 			{
 				boolean MateriasFaltantes=Alumno.verificarAvance(Sistemas);
 				boolean CBUS= Alumno.cumplioCbus();
@@ -96,20 +108,25 @@ public class Consola {
 				}
 				else
 				{
-					System.out.print("El estudiante no es candidato a grad○○ \n");
+					System.out.print("El estudiante no es candidato a grado \n");
 
 				}
 				
 			}
-			else if (Opcion2.equals("4")) 
+			else if (transformacion2==4) 
 			{
 				
 				repetidor=false;
 				repetidor2=false;
 			}
-			}while(repetidor2);
+			else 
+			{
+				System.out.print("Introduzca uno de  un numero entre 1 y 4 \n");
+				repetidor2=true;
 			}
-		else if(Opcion.equals("2"))
+				}while(repetidor2);
+			}
+		else if(transformacion==2)
 		{ 
 			boolean repetidor3=true;
 			do {
@@ -118,16 +135,30 @@ public class Consola {
 			System.out.print("1-Revisar avance estudiante \n");
 			System.out.print("2-Cerrar aplicacion");
 			String AccionCordinador=sc.nextLine();
-			if(AccionCordinador.equals("1"))
+			int transformacion3=Integer.parseInt(AccionCordinador);
+			if(transformacion3==1)
 			{
 				
 			}
-			else if (AccionCordinador.equals("3"))
+			else if (transformacion3==2)
 			{
 				repetidor=false;
 				repetidor3=false;
 			}
+			else 
+			{
+				System.out.print("Introduzca uno de  un numero entre 1 y 2 \n");
+				repetidor3=true;
+			}
 			}while(repetidor3);
+		}
+		else 
+		{
+			repetidor=true;
+		}
+		}catch(Exception Error) {
+			System.out.print("Introdusca un numero entre 1 y 2 \n");
+			repetidor=true;
 		}
 		
 	}while(repetidor);
@@ -136,7 +167,10 @@ public class Consola {
 	
 	
 	public static void planearhorarioPrerequisitos(ArrayList<InformacionMateria> materiasPasadas,ArrayList<InformacionMateria> Pensum,ArrayList<String> CodigosPlaneados  ) 
-	{	boolean pre= true;
+	{	/*
+	Esta funcion es la que se encarga de revisar si cumplimos con los correquisitos al planear  una materia
+	*/
+		boolean pre= true;
         ArrayList<String> codigosMateriasPasadas= new ArrayList<String>();
         
         for (int a = 0; a < materiasPasadas.size(); a++)
@@ -190,7 +224,11 @@ public class Consola {
 	
 	
 	public static void planearhorarioCorequisitos(ArrayList<InformacionMateria> materiasPasadas,ArrayList<InformacionMateria> Pensum,ArrayList<String> CodigosPlaneados  ) 
-	{	boolean co= true;
+	{	/*
+	Esta funcion es la que se encarga de  decirnos si el estudiante ha cumplido con los correquisitos para mirar una materia el proximo semestre
+	*/
+		
+		boolean co= true;
         int contadorCorre=0;
         ArrayList<String> codigosMateriasPasadas= new ArrayList<String>();
         
@@ -217,7 +255,9 @@ public class Consola {
 
                     for (int l = 0; l < Correquisitos.length; l++)
                     {
-                    	if (!codigosMateriasPasadas.contains(Correquisitos[l])&&!CodigosPlaneados.contains(Correquisitos)) {
+
+                    
+                    	if (!codigosMateriasPasadas.contains(Correquisitos[l])&&!CodigosPlaneados.contains(Correquisitos)&& Correquisitos.length>1) {
                     		
                     		System.out.println("No cumple con los correquisitos para poder  planear la materia:"+codigoPlaneado+" sin antes planear o haber visto: "+Correquisitos[l]);
                     		co=false;
@@ -238,49 +278,27 @@ public class Consola {
                 }}}}
 	
 	public static void planearhorario(ArrayList<InformacionMateria> materiasPasadas,ArrayList<InformacionMateria> Pensum,ArrayList<String> CodigosPlaneados  ) 
-	{System.out.println("PRE Y CORREQUISTOS \n");
+	{
+		/*
+		 Esta funcion es la que se encarga de decirnos si el estudiante ha cumplido con los requisitos para mirar una materia el proximo semestre
+		 */
+		System.out.println(" \n PRERREQUISITOS Y CORREQUISTOS \n");
 
 		planearhorarioCorequisitos( materiasPasadas, Pensum,CodigosPlaneados  );
 		planearhorarioPrerequisitos( materiasPasadas, Pensum,CodigosPlaneados  );
 
         }
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 	
 	public static ArrayList<ArrayList> AgregarSemestre(Estudiante Alumno)
 	{	
-		
+		/*
+		 *Esta funcion se encarga de crear un numero de ArrayList por semestre que el estudiante haya visto y
+		 * guardar las materias que vio en el 
+		 */
+		//
 		int NumerosListas=0;
 		
 		for (int i = 0; i <Alumno.getMateriasPasadas().size(); i++)
@@ -311,7 +329,8 @@ public class Consola {
 
 	}
 	public static ArrayList<InformacionMateria> CopiaryEliminar  (ArrayList<InformacionMateria> MateriasPasadas)
-	{
+	{  /*Esta funcion Elimina ciertas materias opcionales que se colocan por defecto  para que asi no cuente esta materia ala hora de calcular
+		El informe de notas*/
 		ArrayList<InformacionMateria> Copia= new ArrayList<InformacionMateria>();
 		for (int j = 0; j <MateriasPasadas.size(); j++)
 		{
@@ -330,6 +349,10 @@ public class Consola {
 	}
 	public static double[] RegistroNotas(ArrayList<InformacionMateria> ListaSemestres,int TituloSemestre)
 	{
+		
+		/*
+		 Esta funcion es la que se encarga de calcular el promedio del estudiante y promedio acumulado en todos los semestres que ha visto
+		 */
 		double[] Valores=new double[2];
 		double TotalCreditos=0;
 		int NMaterias=0;
@@ -349,7 +372,13 @@ public class Consola {
 			PromedioSemestre+=NotaClase;
 			System.out.print("Nombre: "+CursosTomados+" Creditos: "+ CreditosTomados+"\n");
 		}
+	
 		PromedioSemestre=PromedioSemestre/TotalCreditos;
+		String hola=Double.toString(PromedioSemestre);
+		if(hola=="NaN")
+		{
+			PromedioSemestre=0;
+		}
 		PromedioAcumulado=PromedioSemestre*TotalCreditos;
 		Valores[0]=PromedioAcumulado;
 		Valores[1]=TotalCreditos*1.0;
@@ -359,6 +388,9 @@ public class Consola {
 	}
 	public static void Devolver(ArrayList<InformacionMateria> Copia,Estudiante Alumno)
 	{
+		/*
+		 Esta devuelve las materia que se eliminaron en Codigo Materias para que asi no tengamos problemas al mirar si el estudiante es candidato a grado
+		 */
 		for (int j = 0; j <Copia.size(); j++)
 		{
 			InformacionMateria recoger=Copia.get(j);
@@ -367,7 +399,11 @@ public class Consola {
 	}
 	public static Estudiante CodigoMaterias(Pensum materiasPensum) 
 	
-	{   String[] listavacia = new String[0];
+	{   
+		/* En esta funcion se utilizan los contructores de Pensum para crear una arraylist con las materias que el estudiante ha visto
+		 
+		 */
+		String[] listavacia = new String[0];
 		InformacionMateria BiologiaCelular=new InformacionMateria(3,"Biología Celular","MBIO-1100",listavacia,listavacia,16,4,0);
 		InformacionMateria Quimica=new InformacionMateria(3,"QUIMICA","QUIM-1103",listavacia,listavacia,16,4,0);
 		String[] ListaP=new String[1];
@@ -381,6 +417,7 @@ public class Consola {
 		Scanner sc = new Scanner (System.in);
 		System.out.print("Digite los codigos de las materias que ha visto separadas por coma  (MATE-1203:Semestre:Nota,MATE-1504:Semestre:Nota,....) ");
 		String Codigos=sc.nextLine();
+	
 		String[] ListaCodigos=Codigos.split(",");
 		///Obtenemos una lista de este tipo["MATE-1203:Semestre:Nota","MATE-1504:Semestre:Nota","MATE-1804:Semestre:Nota"]
 		ArrayList<InformacionMateria> MateriasEstudiante=new ArrayList<InformacionMateria>() ;
@@ -415,9 +452,11 @@ public class Consola {
 		}
 		
 		}
-		System.out.println(MateriasEstudiante);
+
 		Estudiante alumno=new Estudiante(MateriasEstudiante);
-		return alumno;	
+		return alumno;
+
+
 	}
 	
 

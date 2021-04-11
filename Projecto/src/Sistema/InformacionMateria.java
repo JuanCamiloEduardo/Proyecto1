@@ -44,63 +44,29 @@ public class InformacionMateria {
 		return Creditos;
 	}
 
-
-	public void setCreditos(int creditos) {
-		Creditos = creditos;
-	}
-
-
 	public String getNombre() {
 		return Nombre;
 	}
-
-
-	public void setNombre(String nombre) {
-		Nombre = nombre;
-	}
-
 
 	public String getCodigo() {
 		return Codigo;
 	}
 
-
-	public void setCodigo(String codigo) {
-		Codigo = codigo;
-	}
-
-
-
-
 	public String[] getPrerequisitos() {
 		return Prerequisitos;
 	}
-
-
-	public void setPrerequisitos(String[] prerequisitos) {
-		Prerequisitos = prerequisitos;
-	}
-
 
 	public String[] getCorrequisitos() {
 		return Correquisitos;
 	}
 
-
 	public int getSemestre() {
 		return Semestre;
 	}
 
-
-
-
-
 	public double getNota() {
 		return Nota;
 	}
-
-
-
 
 	public void setSemestre(int semestre) {
 		Semestre = semestre;
@@ -111,20 +77,12 @@ public class InformacionMateria {
 		Nota = nota;
 	}
 
-
-	public void setCorrequisitos(String[] correquisitos) {
-		Correquisitos = correquisitos;
-	}
-
-
 	public int getDuracionSemestre() {
 		return DuracionSemestre;
 	}
 
 
-	public void setDuracionSemestre(int duracionSemestre) {
-		DuracionSemestre = duracionSemestre;
-	}
+
 	
 	
 }

@@ -8,24 +8,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 public class Pensum {
 	private ArrayList<InformacionMateria> MateriasPensum;
-	private int CreditosCBUS=14;
+	
 
-	private int Ingles=12;
-	private int SegundaLengua=20;
 	
 	public ArrayList<InformacionMateria> getMateriasPensum() {
 		return MateriasPensum;
 	}
-	public int getCreditosCBUS() {
-		return CreditosCBUS;
-	}
 
-	public int getIngles() {
-		return Ingles;
-	}
-	public int getSegundaLengua() {
-		return SegundaLengua;
-	}
 	public Pensum(ArrayList<InformacionMateria> materiasPensum) {
 		super();
 		MateriasPensum = materiasPensum;
