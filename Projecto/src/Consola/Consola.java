@@ -57,7 +57,7 @@ public class Consola {
 				 {
 					 Codigos.add(ListaCodigos[k]);
 				 }
-				 planearhorario(Alumno.getMateriasPasadas(),Sistemas.getMateriasPensum(),Codigos);
+			planearhorario(Alumno.getMateriasPasadas(),Sistemas.getMateriasPensum(),Codigos);
 			}
 			else if (Opcion2.equals("2")) {
 					
@@ -136,45 +136,53 @@ public class Consola {
 	public static void planearhorario(ArrayList<InformacionMateria> materiasPasadas,ArrayList<InformacionMateria> Pensum,ArrayList<String> CodigosPlaneados  ) 
 	{
         int contadorCorre=0;
+        ArrayList<String> codigosMateriasPasadas= new ArrayList<String>();
+        
+        for (int a = 0; a < materiasPasadas.size(); a++)
+        {codigosMateriasPasadas.add(materiasPasadas.get(a).getCodigo());
+        }
+        ArrayList<String> codigosMateriasPensum= new ArrayList<String>();
+        for (int b = 0; b < Pensum.size(); b++)
+        {codigosMateriasPensum.add(Pensum.get(b).getCodigo());
+        }
+        
         for (int j = 0; j < CodigosPlaneados.size(); j++)
         {
+        	System.out.println("halooou");
             String codigoPlaneado = CodigosPlaneados.get(j);
             for (int k = 0; k < Pensum.size(); k++)
             {
+            	System.out.println("halooou2222");
+
                 if (Pensum.get(k).getCodigo().equals(codigoPlaneado))
                 {
-                    String[] Correquisitos=Pensum.get(k).getCorrequisitos();
-                    for (int l = 0; l< Pensum.size(); l++)
-                    {
-                        if (!CodigosPlaneados.contains( Correquisitos[l]))
-                        {
-                            contadorCorre+=1;
-                        for (int m = 0; m< materiasPasadas.size(); m++)
-                        {
-                            if (contadorCorre==0 &&(materiasPasadas.get(m).getCodigo().equals(Correquisitos[l]))) {
-                                System.out.println("Puede ver por correquisitos"+codigoPlaneado);
-                            }
-                            else{
-                                System.out.println("No cumple Coerrequistos le hace falta ver:"+codigoPlaneado);
-                            }
-                        }
+                   //String[] Correquisitos=Pensum.get(k).getCorrequisitos();
+                	System.out.println("halooo6666");
+
 
                     String[] Prerrequisitos=Pensum.get(k).getPrerequisitos();
-
-                    for (int n = 0; n< materiasPasadas.size(); n++)
+                    for (int l = 0; l < Prerrequisitos.length; l++)
                     {
-                        if (materiasPasadas.get(n).getCodigo().equals(Correquisitos[l])) {
-                            System.out.println("Puede ver por Prerrequisitos"+codigoPlaneado);
-                        }
-                        else{
-                            System.out.println("No cumple Prerrequistos le hace falta ver:"+codigoPlaneado);
-                        }
+                    	System.out.println("halooo777");
+
+                    System.out.println(Prerrequisitos[l]);
+                    System.out.println("CODIGOMATERIASPASADAS"+codigosMateriasPasadas);
+                    System.out.println(Prerrequisitos[l].toString());
+                    if (!codigosMateriasPasadas.contains(Prerrequisitos[l])) {
+                    	System.out.println("No puede ver:"+codigoPlaneado+" Hasta que vea el Prerrequisito: "+Prerrequisitos[l]);
                     }
-                }
-                    }}
+                    
+                    
+                    else {
+                    System.out.println("Cumple con los prerrequistos de la materia:"+Prerrequisitos[l]);
+                    }
+                    }
+                 
+                    
     }
     }
 }
+        }
 
 	
 	
@@ -352,6 +360,7 @@ public class Consola {
 
 			}
 		InformacionMateria CambioNota=materiasPensum.getMateriasPensum().get(j);
+
 		CambioNota.setNota(Double.parseDouble(UbicacionCodigo[2]));
 		CambioNota.setSemestre(Integer.parseInt(UbicacionCodigo[1]));
 		MateriasEstudiante.add(CambioNota);
@@ -365,6 +374,7 @@ public class Consola {
 		}
 		
 		}
+		System.out.println(MateriasEstudiante);
 		Estudiante alumno=new Estudiante(MateriasEstudiante);
 		return alumno;	
 	}
