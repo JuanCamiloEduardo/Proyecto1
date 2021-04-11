@@ -1,47 +1,47 @@
-3/CalculoDiferencial/MATE-1203/[]/[]/16
-3/Introducción a la Programación/ISIS-1221/[]/[]/16
-3/Introducción a la Ingeniería de Sistemas/ISIS-1001/[]/[]/16
-2/Escritura Universitaria 1/LITE-1621/[]/[]/8
-2/Escritura Universitaria 1/LENG-1511/[]/[]/8
-2/Escritura Universitaria 2/LENG-1512/[LENG-1511,LITE-1621]/[]/8
-2/Escritura Universitaria 2/LITE-1622/[LENG-1511,LITE-1621]/[]/8
-3/Constitución y Democracia/DERE-1300/[]/[]/16
-2/COL: Espacio, Tiempo, Diferenci/CBCC-1177/[]/[]/8
-1/Física Experimental 1/FISI-1019/[]/[FISI-1018]/16
-3/Física 1/FISI-1018/[]/[FISI-1019,MATE-1203]/16
-3/Cálculo Integral y Ecuaciones Diferenciales/MATE-1214/[MATE-1203]/[]/16
-3/Matemática Estructural y Lógica/ISIS-1104/[ISIS-1221]/[]/16
-3/Estructuras de Datos y Algorítmos/ISIS-1225 /[ISIS-1221]/[]/16
-1/Física Experimental 2/FISI-1029/[FISI-1019]/[FISI-1028]/16
-3/Física 2/FISI-1028 /[FISI-1018,MATE-1203]/[FISI-1029,MATE-1214,MATE-1203]/16
-3/Algebra Lineal 1/MATE-1105 /[MATE-1203]/[]/16
-3/Lenguajes y Máquinas/ISIS-1106/[ISIS-1104,ISIS-1225]/[LENG-1511,LITE-1621]/16
-3/Diseño y Programación O.O./ISIS-1226/[ISIS-1225]/[]/16
-3/Fundamentos de Infraestructura Tecnológica/ISIS-1304 /[ISIS-1225]/[]/16
-3/Biología Celular TEO/MBIO-1100/[]/[]/16
-3/Quimica/QUIM-1103/[]/[]/16
-3/Cálculo Vectorial/MATE-1207/[MATE-1105,MATE-1214]/[]/16
-3/Diseño y Análisis de Algoritmos/ISIS-1105/[ISIS-1104,ISIS-1226,MATE-1105]/[]/16
-3/SistemasTransaccionales/ISIS-2304/[ISIS-1226]/[]/16
-3/Desarrollo de SW en Equipo/ISIS-2603/[ISIS-1226]/[]/16
-3/TI en las Organizaciones/ISIS-1404/[ISIS-1221]/[]/16
-3/Análisis de Decisión e Inversión/IIND-2401/[MATE-1105,ISIS-1001]/[]/16
-3/Probabilidad y Estadística/IIND-2106/[MATE-1105,MATE-1214]/[]/16
-3/Diseño de Productos e Innovación en TI/ISIS-2007 /[ISIS-2603,LENG-1156]/[]/16
-3/Arquitectura y Diseño de SW/ISIS-2503/[ISIS-2603]/[]/16
-3/Arquitectura Empresarial/ISIS-2403/[ISIS-1404]/[]/16
-3/Infraestructura computacional /ISIS-2203/[ISIS-1304]/[]/16
-3/Modelado, Simulación y Optimización/ISIS-3302/[ISIS-1206,ISIS-1105,ISIS-1106,IIND-2106]/[]/16
-3/Inteligencia de Negocios/ISIS-3301/[ISIS-2304,ISIS-2403]/[]/16
-3/Programación con tecnologías web/ISIS-3710/[ISIS-2503]/[]/16
-3/Sistemas Empresariales/ISIS-3425/[ISIS-2403]/[]/16
-3/Infraestructura de Comunicaciones/ISIS-3204/[ISIS-2403,ISIS-1304]/[]/16
-3/Construcción de Aplicaciones Móviles/ISIS-3510/[ISIS-2503, ISIS-3204]/[]/16
-3/Proyecto de Grado/ISIS-3007/[ISIS-2403, ISIS-3204]/[]/16
-2//CBCO-/[]/[]/8
-2//CBPC-/[]/[]/8
-2//EPSI-/[]/[]/8
-2//EMQB-/[]/[]/16
-2//CELE-/[]/[]/8
-2//TPOE-/[]/[]/8
-2//CBCA-/[]/[]/8
+3/CalculoDiferencial/MATE-1203/[]/[]/16/1/0
+3/Introducción a la Programación/ISIS-1221/[]/[]/16/1/0
+3/Introducción a la Ingeniería de Sistemas/ISIS-1001/[]/[]/16/1/0
+2/Escritura Universitaria 1/LITE-1621/[]/[]/8/1/0
+2/Escritura Universitaria 1/LENG-1511/[]/[]/8/1/0
+2/Escritura Universitaria 2/LENG-1512/[LENG-1511,LITE-1621]/[]/8/1/0
+2/Escritura Universitaria 2/LITE-1622/[LENG-1511,LITE-1621]/[]/8/1/0
+3/Constitución y Democracia/DERE-1300/[]/[]/16/1/0
+2/COL: Espacio, Tiempo, Diferenci/CBCC-1177/[]/[]/8/1/0
+1/Física Experimental 1/FISI-1019/[]/[FISI-1018]/16/2/0
+3/Física 1/FISI-1018/[]/[FISI-1019,MATE-1203]/16/2/0
+3/Cálculo Integral y Ecuaciones Diferenciales/MATE-1214/[MATE-1203]/[]/16/2/0
+3/Matemática Estructural y Lógica/ISIS-1104/[ISIS-1221]/[]/16/2/0
+3/Estructuras de Datos y Algorítmos/ISIS-1225 /[ISIS-1221]/[]/16/2/0
+1/Física Experimental 2/FISI-1029/[FISI-1019]/[FISI-1028]/16/3/0
+3/Física 2/FISI-1028 /[FISI-1018,MATE-1203]/[FISI-1029,MATE-1214,MATE-1203]/16/3/0
+3/Algebra Lineal 1/MATE-1105 /[MATE-1203]/[]/16/2/0/3/0
+3/Lenguajes y Máquinas/ISIS-1106/[ISIS-1104,ISIS-1225]/[LENG-1511,LITE-1621]/16/2/0/3/0
+3/Diseño y Programación O.O./ISIS-1226/[ISIS-1225]/[]/16/2/0/3/0
+3/Fundamentos de Infraestructura Tecnológica/ISIS-1304 /[ISIS-1225]/[]/16/2/0/3/0
+3/Biología Celular TEO/MBIO-1100/[]/[]/16/2/0/4/0
+3/Quimica/QUIM-1103/[]/[]/16/2/0/4/0/4/0
+3/Cálculo Vectorial/MATE-1207/[MATE-1105,MATE-1214]/[]/16/2/0/4/0
+3/Diseño y Análisis de Algoritmos/ISIS-1105/[ISIS-1104,ISIS-1226,MATE-1105]/[]/16/4/0
+3/SistemasTransaccionales/ISIS-2304/[ISIS-1226]/[]/16/4/0
+3/Desarrollo de SW en Equipo/ISIS-2603/[ISIS-1226]/[]/16/4/0
+3/TI en las Organizaciones/ISIS-1404/[ISIS-1221]/[]/16/4/0
+3/Análisis de Decisión e Inversión/IIND-2401/[MATE-1105,ISIS-1001]/[]/16/5/0
+3/Probabilidad y Estadística/IIND-2106/[MATE-1105,MATE-1214]/[]/16/5/0
+3/Diseño de Productos e Innovación en TI/ISIS-2007 /[ISIS-2603,LENG-1156]/[]/16/5/0
+3/Arquitectura y Diseño de SW/ISIS-2503/[ISIS-2603]/[]/16/5/0
+3/Arquitectura Empresarial/ISIS-2403/[ISIS-1404]/[]/16/5/0
+3/Infraestructura computacional /ISIS-2203/[ISIS-1304]/[]/16/5/0
+3/Modelado, Simulación y Optimización/ISIS-3302/[ISIS-1206,ISIS-1105,ISIS-1106,IIND-2106]/[]/16/6/0
+3/Inteligencia de Negocios/ISIS-3301/[ISIS-2304,ISIS-2403]/[]/16/6/0
+3/Programación con tecnologías web/ISIS-3710/[ISIS-2503]/[]/16/6/0
+3/Sistemas Empresariales/ISIS-3425/[ISIS-2403]/[]/16/6/0
+3/Infraestructura de Comunicaciones/ISIS-3204/[ISIS-2403,ISIS-1304]/[]/16/6/0
+3/Construcción de Aplicaciones Móviles/ISIS-3510/[ISIS-2503, ISIS-3204]/[]/16/7/0
+3/Proyecto de Grado/ISIS-3007/[ISIS-2403, ISIS-3204]/[]/16/7/0
+2//CBCO-/[]/[]/8/0/0
+2//CBPC-/[]/[]/8/0/0
+2//EPSI-/[]/[]/8/0/0
+2//EMQB-/[]/[]/16/6/0
+2//CELE-/[]/[]/8/7/0
+2//TPOE-/[]/[]/8/0/0
+2//CBCA-/[]/[]/8/0/0

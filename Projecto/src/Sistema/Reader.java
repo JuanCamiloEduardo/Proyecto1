@@ -37,8 +37,9 @@ public class Reader {
 					String[] ListaCorrequisitos=Correquisitos.split(",");
 					ListaCorrequisitos=Correquisitos.split(",");
 					int Duracion= Integer.parseInt(partes[5]);
-					
-					InformacionMateria Materia= new InformacionMateria(Creditos,Nombre,Codigo, ListaPrerrequisitos,ListaCorrequisitos,Duracion);
+					int Semestre=Integer.parseInt(partes[6]);
+					double Nota=Double.parseDouble(partes[7]);
+					InformacionMateria Materia= new InformacionMateria(Creditos,Nombre,Codigo, ListaPrerrequisitos,ListaCorrequisitos,Duracion,Semestre,Nota);
 					Pensum.add(Materia);
 					linea = br.readLine();
 				}

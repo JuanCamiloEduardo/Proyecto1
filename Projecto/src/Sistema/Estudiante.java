@@ -3,34 +3,46 @@ import java.util.ArrayList;
 public class Estudiante {
 	private boolean RIngles;
 	private boolean RSegundoLenguaje;
-	private boolean REscritura;
 	private boolean Rcbus;
-	private boolean RConstitucion;
-
+	private boolean RELECTIVAS;
 	private ArrayList<InformacionMateria> MateriasPasadas;
-	private int CreditosPasados;
 	
+	public ArrayList<InformacionMateria> getMateriasPasadas() {
+		return MateriasPasadas;
+	}
+
+	public void setMateriasPasadas(ArrayList<InformacionMateria> materiasPasadas) {
+		MateriasPasadas = materiasPasadas;
+	}
+
 	public Estudiante(ArrayList<InformacionMateria> materiasPasadas) {
 		super();
 		MateriasPasadas = materiasPasadas;
 	}
 	
-	public boolean Ingles( ArrayList<InformacionMateria> MateriasPasadas) {
+	public boolean Ingles( ) {
+		RIngles=false;
 		for (int j = 0; j < MateriasPasadas.size(); j++)
 		{
 		String Codigo =MateriasPasadas.get(j).getCodigo();
-		if (Codigo == "LENG-1156"){
+		if (Codigo == "LENG-1156")
+		{
 				RIngles= true;
+			
 				
 		}
-		
-		j++; 
+		else
+		{
+			System.out.print("El estudiante no ha cumplido con el curso de ingles 1156 \n");
+		}
+
 		}
 		
 	return RIngles;
 	}
 	
-	public boolean SegundoLenguaje( ArrayList<InformacionMateria> MateriasPasadas) {
+	public boolean SegundoLenguaje( ) {
+		RSegundoLenguaje=false;
 		for (int j = 0; j < MateriasPasadas.size(); j++)
 		{
 		String Nombre =MateriasPasadas.get(j).getNombre();
@@ -40,8 +52,11 @@ public class Estudiante {
 			
 			RSegundoLenguaje= true;
 		}
-		
-		j++; 
+		else
+		{
+			System.out.print("El estudiante no ha cumplido con el requisito de segundo lenguaje(cumplir un curso 10 de idiomas)\n)");
+		}
+
 		}
 		
 	return RSegundoLenguaje;
@@ -49,45 +64,9 @@ public class Estudiante {
 	
 	
 	
-	public boolean Escritura( ArrayList<InformacionMateria> MateriasPasadas) {
-		boolean REscritura1 = false;
-		boolean REscritura2 = false;
 
-		for (int j = 0; j < MateriasPasadas.size(); j++)
-		{
-			
-		String Codigo =MateriasPasadas.get(j).getCodigo();
-		if (Codigo == "LENG-1511"|| Codigo=="LITE-1621") {
-				REscritura1= true;	
-				
-		}
-		if (Codigo == "LENG-1512"|| Codigo=="LITE-1622") {
-			REscritura2= true;	}
-		
-		j++; 
-		}
-		
-		
-		if (REscritura1==true && REscritura2==true) {
-			REscritura= true;
-		} 
-	return REscritura;
-	}
 	
-	public boolean Constitucion( ArrayList<InformacionMateria> MateriasPasadas) {
-		for (int j = 0; j < MateriasPasadas.size(); j++)
-		{
-			
-		String Codigo =MateriasPasadas.get(j).getCodigo();
-		if (Codigo == "DERE-1300"){
-				RConstitucion= true;		
-		}
-		j++; 
-		}
-	return RConstitucion;
-	}
-	
-	public ArrayList<InformacionMateria> verificarCbus( ArrayList<InformacionMateria> MateriasPasadas) {
+	public ArrayList<InformacionMateria> verificarCbus( ) {
 		ArrayList<InformacionMateria> CbusAprobados= new ArrayList<InformacionMateria> ();
 		for (int K = 0; K < MateriasPasadas.size(); K++)
 		{
@@ -105,19 +84,46 @@ public class Estudiante {
 		return CbusAprobados;
 		
 	}
+	public boolean cumpleCele() 
+	{	RELECTIVAS=false;
+		int contador=0;
+		for (int K = 0; K < MateriasPasadas.size(); K++)
+		{
+			String codigo=MateriasPasadas.get(K).getCodigo();
+			if (codigo.substring(0,5).equals("CELE-"))
+			{
+				contador+=1;
+				
+				if (contador>=2)
+				{
+					RELECTIVAS=true;
+				}
+				else if(contador==1)
+				{
+					System.out.print("Al estudiante le hace falta un Curso de Libre Eleccion");
+				}
+				else
+				{
+					System.out.print("Al estudiante le hace falta dos Cursos de Libre Eleccion");
+				}
+			}
+		}
+		return RELECTIVAS;
+		
+		
+	}
 
 	public boolean cumplioCbus () {
+		Rcbus=false;
 		boolean cbucientifico=false;
 		boolean cbuColombia=false;
 		boolean cbuHumanidades=false;
 		boolean cbuEpsilon=false;
 		boolean cbuTipoE=false;
-		boolean Emaq=false;
-		boolean cele=false;
 		int contador=0;
 		
 		
-		ArrayList<InformacionMateria>  CbusAprobados =verificarCbus (MateriasPasadas);
+		ArrayList<InformacionMateria>  CbusAprobados =verificarCbus ();
 		if (CbusAprobados.size()<6 ) {
 			Rcbus= false;
 		}
@@ -129,30 +135,57 @@ public class Estudiante {
 					
 					if(curso.getCodigo().contains("CBCO-")) {
 						cbuColombia=true;
-						System.out.print("Hay un CBCO ");
+						System.out.print(" ");
+					}
+					else if (j==CbusAprobados.size())
+					{
+						System.out.print("Al estudiante le hace falta un CBU tipo Colombia");
 					}
 					
 					if(curso.getCodigo().contains("CBPC-")) {
 						cbucientifico=true;
-						
+					}
+					else if (j==CbusAprobados.size())
+					{
+						System.out.print("Al estudiante le hace falta un CBU tipo Pensamiento Cientifico");
 					}
 					if(curso.getCodigo().contains("EPSI-")) {
 						cbuEpsilon=true;
 						
 					}
+					else if (j==CbusAprobados.size())
+					{
+						System.out.print("Al estudiante le hace falta un curso tipo EPSILON");
+					}
 					if(curso.getCodigo().contains("CBCA-")) {
 						cbuHumanidades=true;
 						
 					}
+					else if (j==CbusAprobados.size())
+					{
+						System.out.print("Al estudiante le hace falta un CBU tipo Artes y Humanidades");
+					}
 				
-					if(curso.getCodigo().contains("TPOE-")) {
+					if(curso.getCodigo().contains("TPOE-")) 
+					{
 						contador+=1;
 						if (contador >1){
 							cbuTipoE= true;
 						}
+					
 						
 					}
-					
+					else if (j==CbusAprobados.size())
+					{
+						if (contador==1)
+						{
+							System.out.print("Al estudiante le hace falta un Curso tipo E");
+						}
+						else
+						{
+							System.out.print("Al estudiante le hace falta dos Cursso tipo E");
+						}
+					}
 					
 					
 			
