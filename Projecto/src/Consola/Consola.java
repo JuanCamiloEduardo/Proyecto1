@@ -135,8 +135,62 @@ public class Consola {
 	
 	
 	
-	public static void planearhorario(ArrayList<InformacionMateria> materiasPasadas,ArrayList<InformacionMateria> Pensum,ArrayList<String> CodigosPlaneados  ) 
-	{
+	public static void planearhorarioPrerequisitos(ArrayList<InformacionMateria> materiasPasadas,ArrayList<InformacionMateria> Pensum,ArrayList<String> CodigosPlaneados  ) 
+	{	boolean pre= true;
+        ArrayList<String> codigosMateriasPasadas= new ArrayList<String>();
+        
+        for (int a = 0; a < materiasPasadas.size(); a++)
+        {codigosMateriasPasadas.add(materiasPasadas.get(a).getCodigo());
+        }
+        ArrayList<String> codigosMateriasPensum= new ArrayList<String>();
+        for (int b = 0; b < Pensum.size(); b++)
+        {codigosMateriasPensum.add(Pensum.get(b).getCodigo());
+        }
+        
+        for (int j = 0; j < CodigosPlaneados.size(); j++)
+        {
+            String codigoPlaneado = CodigosPlaneados.get(j);
+            for (int k = 0; k < Pensum.size(); k++)
+            {
+            	
+
+                if (Pensum.get(k).getCodigo().equals(codigoPlaneado))
+                {
+                   //String[] Correquisitos=Pensum.get(k).getCorrequisitos();
+                	
+
+
+                    String[] Prerrequisitos=Pensum.get(k).getPrerequisitos();
+                    for (int l = 0; l < Prerrequisitos.length; l++)
+                    {
+                    	
+
+                    
+                    if (!codigosMateriasPasadas.contains(Prerrequisitos[l])) {
+                    	System.out.println("No puede ver:"+codigoPlaneado+" Hasta que vea el Prerrequisito: "+Prerrequisitos[l]);
+                    	pre=false;
+                    }
+                    
+                    
+                   
+                    }
+                    if (pre==true) {
+                    	  System.out.println("Cumple con los prerrequistos de la materia:"+codigoPlaneado+" revise los correquisitos para saber si podrá inscribirla.");
+                      }
+                    
+    }
+                
+    }
+}
+        }
+
+	
+	
+	
+	
+	
+	public static void planearhorarioCorequisitos(ArrayList<InformacionMateria> materiasPasadas,ArrayList<InformacionMateria> Pensum,ArrayList<String> CodigosPlaneados  ) 
+	{	boolean co= true;
         int contadorCorre=0;
         ArrayList<String> codigosMateriasPasadas= new ArrayList<String>();
         
@@ -150,42 +204,77 @@ public class Consola {
         
         for (int j = 0; j < CodigosPlaneados.size(); j++)
         {
-        	System.out.println("halooou");
             String codigoPlaneado = CodigosPlaneados.get(j);
             for (int k = 0; k < Pensum.size(); k++)
             {
-            	System.out.println("halooou2222");
+            	
 
                 if (Pensum.get(k).getCodigo().equals(codigoPlaneado))
                 {
-                   //String[] Correquisitos=Pensum.get(k).getCorrequisitos();
-                	System.out.println("halooo6666");
+                   String[] Correquisitos=Pensum.get(k).getCorrequisitos();
+                	
 
 
-                    String[] Prerrequisitos=Pensum.get(k).getPrerequisitos();
-                    for (int l = 0; l < Prerrequisitos.length; l++)
+                    for (int l = 0; l < Correquisitos.length; l++)
                     {
-                    	System.out.println("halooo777");
+                    	if (!codigosMateriasPasadas.contains(Correquisitos[l])&&!CodigosPlaneados.contains(Correquisitos)) {
+                    		
+                    		System.out.println("No cumple con los correquisitos para poder  planear la materia:"+codigoPlaneado+" sin antes planear o haber visto: "+Correquisitos[l]);
+                    		co=false;
+                    	}
+                    	
+                    	
+                    	
+                    	
+                    	
 
-                    System.out.println(Prerrequisitos[l]);
-                    System.out.println("CODIGOMATERIASPASADAS"+codigosMateriasPasadas);
-                    System.out.println(Prerrequisitos[l].toString());
-                    if (!codigosMateriasPasadas.contains(Prerrequisitos[l])) {
-                    	System.out.println("No puede ver:"+codigoPlaneado+" Hasta que vea el Prerrequisito: "+Prerrequisitos[l]);
+        }
+                    if (co==true) {
+                  	  System.out.println("Cumple con los Correquistos de la materia:"+codigoPlaneado+" revise los Prerrequisitos para saber si podrá inscribirla.");
+
+                    	
                     }
-                    
-                    
-                    else {
-                    System.out.println("Cumple con los prerrequistos de la materia:"+Prerrequisitos[l]);
-                    }
-                    }
-                 
-                    
-    }
-    }
-}
+
+                }}}}
+	
+	public static void planearhorario(ArrayList<InformacionMateria> materiasPasadas,ArrayList<InformacionMateria> Pensum,ArrayList<String> CodigosPlaneados  ) 
+	{System.out.println("PRE Y CORREQUISTOS \n");
+
+		planearhorarioCorequisitos( materiasPasadas, Pensum,CodigosPlaneados  );
+		planearhorarioPrerequisitos( materiasPasadas, Pensum,CodigosPlaneados  );
+
         }
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
