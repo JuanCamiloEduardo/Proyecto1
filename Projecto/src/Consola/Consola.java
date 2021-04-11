@@ -28,6 +28,7 @@ public class Consola {
 		if(Opcion.equals("1")) 
 		{   
 			System.out.print("Registre sus cursos \n");
+			System.out.print("Exepciones \nEstas son para que el programa pueda comprender a que tipo de materia se refiere \nEl curso de Escritura Universitaria 1 y 2 se hacen bajo el codigo LENG-1511 y LENG-1512 \nPara los cursos de Libre Eleccion se hace bajo el codigo CELE-Numero \nPara los Cursos y CBUS Tipo Epsilon y Tipo E escribirlo como EPSI-Numero y TPOE-Numero \n");
 			Reader lector=new Reader();
 			ArrayList<InformacionMateria> ListadoMaterias=lector.cargarRecords(archivo);
 			ArrayList<String> nuevo= new ArrayList<String>();
@@ -35,15 +36,15 @@ public class Consola {
 			Estudiante Alumno=CodigoMaterias(Sistemas);
 			boolean repetidor2=true;
 			do {
-			System.out.print("---------------------------------------------");
-			System.out.print("---------------------------------------------");
+			System.out.print("--------------------------------------------- \n");
+			System.out.print("--------------------------------------------- \n");
 			System.out.print("Que accion quiere realizar \n");
 			System.out.print("1-Planear cursos \n");
 			System.out.print("2-Mirar reporte de nota \n");
 			System.out.print("3-Soy candidato a grado \n");
 			System.out.print("4-Cerrar aplicacion \n");
-			System.out.print("---------------------------------------------");
-			System.out.print("---------------------------------------------");
+			System.out.print("--------------------------------------------- \n");
+			System.out.print("---------------------------------------------\n");
 			String Opcion2=sc.nextLine();
 
 			 if (Opcion2.equals("1")) 
