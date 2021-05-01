@@ -13,23 +13,18 @@ public class OpcionesSD extends JPanel {
 	private JTextField CampoCodigo;
 	private JButton Planear;
 	private JButton Quitar;
-	private JLabel Semestre;
-	private JTextField CampoSemestre;
 	public OpcionesSD()
 	{
-		setLayout(new GridLayout(7,1));
+		setLayout(new GridLayout(5,1));
 		PlanearQ=new JLabel("Planear/Quitar Materias");
 		Codigo = new JLabel("Codigo: ");
 		CampoCodigo= new JTextField();
-		Semestre=new JLabel("Semestre:");
-		CampoSemestre=new JTextField();
+
 		Planear=new JButton("Planear");
 		Quitar=new JButton("Quitar");
 		add(PlanearQ);
 		add(Codigo);
 		add(CampoCodigo);
-		add(Semestre);
-		add(CampoSemestre);
 		add(Planear);
 		add(Quitar);
 	}

@@ -20,6 +20,7 @@ public class MateriasVistas extends JPanel {
 	private JList ListaPlaneadas;
 	private DefaultListModel model= new DefaultListModel();
 	private int uno = 1;
+	private String largo;
 
 	public MateriasVistas() 
 	{
@@ -30,14 +31,6 @@ public class MateriasVistas extends JPanel {
 		 * {"Nombre","Nombre","Nombre","Nombre","Nombre","Nombre","Nombre","Nombre",
 		 * "Nombre","Nombre" };
 		 */
-		
-		model.addElement("Nombre");
-		model.addElement("Nombre");
-		model.addElement("Nombre");
-		model.addElement("Nombre");
-		model.addElement("Nombre");
-		model.addElement("Nombre");
-		model.addElement("Nombre");
 		ListaPlaneadas = new JList(model);
 		Dimension dimension = ListaPlaneadas.getPreferredSize();
 		JScrollPane jsp = new JScrollPane(ListaPlaneadas);
@@ -49,28 +42,22 @@ public class MateriasVistas extends JPanel {
 
 	}
 	
-	//Jhan carlos---------------------------------------
-	//this methos show the Jlist empty when the program is initialize
-	public DefaultListModel cleanJList() 
-	{
-		
-		DefaultListModel modelo = new DefaultListModel();
-		ListaPlaneadas.setModel(modelo);
-		return modelo; 
-	}
-	//------------------------------
+
 
 	public void Actualizar(String Union) {
 		Consola c = new Consola();
-		if (uno == 1) {
-			uno = 2;
-			c.CrearPensum();
-			Pensum materias = c.getSistemas();
-			c.CodigoMaterias(materias, Union);
-		} else if (uno != 1) {
-			Pensum materias = c.getSistemas();
-			c.ActualizarAlumno(materias, Union);
+		c.CrearPensum();
+		Pensum materias = c.getSistemas();
+		if(uno==1)
+		{
+			uno=2;
+			largo=Union;
 		}
+		else if(uno!=1)
+		{
+			largo=largo+","+Union;
+		}
+		c.CodigoMaterias(largo);
 		Estudiante Informacion = c.getAlumno();
 		ArrayList<InformacionMateria> Materias = Informacion.getMateriasPasadas();
 		int tamano = Materias.size();
@@ -78,7 +65,6 @@ public class MateriasVistas extends JPanel {
 		String Nombre = Info.getNombre();
 		DefaultListModel model=(DefaultListModel) ListaPlaneadas.getModel();
 		model.addElement(Nombre);
-		System.out.println(Nombre);
 		}
 		
 	}

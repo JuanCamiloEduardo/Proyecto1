@@ -28,12 +28,11 @@ public class VentanaEstudiante extends JFrame{
 		
 		norte = new OpcionesNorte();
 		add(norte,BorderLayout.NORTH);
-		sur = new OpcionesSur();
-		add(sur,BorderLayout.SOUTH);
-		
 		centro = new OpcionesCentro();
 		add(centro,BorderLayout.CENTER);
-		
+		vistas=centro.getVistas();
+		sur = new OpcionesSur(vistas);
+		add(sur,BorderLayout.SOUTH);		
 
 		
 		

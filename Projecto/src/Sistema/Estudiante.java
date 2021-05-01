@@ -22,9 +22,9 @@ public class Estudiante extends Usuario {
 		super();
 		MateriasPasadas = materiasPasadas;
 	}
-	public void ActualizarEstudiante(InformacionMateria materiasPasadas)
+	public void ActualizarEstudiante(Estudiante alumno, InformacionMateria materia)
 	{
-		MateriasPasadas.add(materiasPasadas);
+		alumno.MateriasPasadas.add(materia);
 	}
 	
 	public boolean Ingles( ) 

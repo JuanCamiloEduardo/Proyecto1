@@ -10,11 +10,11 @@ public class OpcionesSur extends JPanel{
 	private OpcioneSC centro;
 	private OpcionesSD derecha;
 	private MateriasVistas Vistas;
-	public OpcionesSur() 
+	public OpcionesSur(MateriasVistas vistas) 
 	{
 		setLayout(new GridLayout(1,3));
 		izquierda=new OpcioneSI();
-		centro=new OpcioneSC();
+		centro=new OpcioneSC(vistas);
 		derecha=new OpcionesSD();
 		add(izquierda);
 		add(centro);

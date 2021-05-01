@@ -26,5 +26,8 @@ public class OpcionesCentro extends JPanel
 		add(Promedio);
 		
 	}
+	public MateriasVistas getVistas() {
+		return Vistas;
+	}
 	
 }

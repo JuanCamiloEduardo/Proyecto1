@@ -21,10 +21,11 @@ public class OpcioneSC extends JPanel implements ActionListener
 	private JLabel CampoNota;
 	private JTextField CampoNuevaNota;
 	private JButton Registrar;
-	private MateriasVistas Roberto;
+	private MateriasVistas vistas;
 	
-	public OpcioneSC()
-	{;
+	public OpcioneSC(MateriasVistas kvistas)
+	{	
+		vistas=kvistas;
 		setLayout(new GridLayout(8,1));
 		RegistrarMaterias=new JLabel("Registrar Materias");
 		Codigo = new JLabel("Codigo: ");
@@ -50,10 +51,10 @@ public class OpcioneSC extends JPanel implements ActionListener
 		String ACodigo=CampoCodigo.getText();
 		String ASemestre=CampoSemestre.getText();
 		String Anota=CampoNuevaNota.getText();
-		String Union=ACodigo+","+ASemestre+","+Anota;
+		String Union=ACodigo+":"+ASemestre+":"+Anota;
 		CampoCodigo.setText("");
 		CampoSemestre.setText("");
 		CampoNuevaNota.setText("");
-		new MateriasVistas().Actualizar(Union);
+		vistas.Actualizar(Union);
 	}
 }
