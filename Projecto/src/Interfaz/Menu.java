@@ -67,23 +67,9 @@ public class Menu extends JFrame implements ActionListener {
 		frame.setVisible(false);}
 		
 		else if (comando.equals("Cordinador")) {
-			vistaCoordinador cord=new vistaCoordinador();
+			VistaCordinador cord=new VistaCordinador();
 			cord.setVisible(true);
 			frame.setVisible(false);}
-		}
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		}	
 		
 	}

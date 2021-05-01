@@ -9,6 +9,7 @@ public class OpcionesSur extends JPanel{
 	private OpcioneSI izquierda;
 	private OpcioneSC centro;
 	private OpcionesSD derecha;
+	private MateriasVistas Vistas;
 	public OpcionesSur() 
 	{
 		setLayout(new GridLayout(1,3));

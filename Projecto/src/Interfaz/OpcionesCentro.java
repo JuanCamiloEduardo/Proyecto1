@@ -20,6 +20,7 @@ public class OpcionesCentro extends JPanel
 		Planeadas=new MateriasPlaneadas();
 		Vistas= new MateriasVistas();
 		Promedio = new Promedio();
+		
 		add(Vistas);
 		add(Planeadas);
 		add(Promedio);

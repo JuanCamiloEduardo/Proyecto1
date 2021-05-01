@@ -8,9 +8,12 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+import Consola.Consola;
+
 public class MateriasPlaneadas extends JPanel {
 
 	private JList ListaPlaneadas;
+	private Consola Logica;
 	public MateriasPlaneadas()
 	{
 		setLayout(new GridLayout(2,1));
@@ -25,6 +28,7 @@ public class MateriasPlaneadas extends JPanel {
 		add(MateriasPlaneadas);
 		add(jsp);
 		
+		
 	}
-	
+
 }

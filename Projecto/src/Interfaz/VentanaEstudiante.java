@@ -8,7 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
-
+import Interfaz.MateriasVistas;
 
 
 
@@ -16,7 +16,7 @@ public class VentanaEstudiante extends JFrame{
 	private OpcionesNorte norte;
 	private OpcionesSur sur;
 	private OpcionesCentro centro;
-
+	private MateriasVistas vistas;
 	
 	public VentanaEstudiante () 
 	{

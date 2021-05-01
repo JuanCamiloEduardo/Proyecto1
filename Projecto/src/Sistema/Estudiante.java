@@ -7,20 +7,28 @@ public class Estudiante extends Usuario {
 	private boolean RELECTIVAS;
 	private ArrayList<InformacionMateria> MateriasPasadas;
 	
-	public ArrayList<InformacionMateria> getMateriasPasadas() {
+	public ArrayList<InformacionMateria> getMateriasPasadas() 
+	{
 		return MateriasPasadas;
 	}
 
-	public void setMateriasPasadas(ArrayList<InformacionMateria> materiasPasadas) {
+	public void setMateriasPasadas(ArrayList<InformacionMateria> materiasPasadas) 
+	{
 		MateriasPasadas = materiasPasadas;
 	}
 
-	public Estudiante(ArrayList<InformacionMateria> materiasPasadas) {
+	public Estudiante(ArrayList<InformacionMateria> materiasPasadas) 
+	{
 		super();
 		MateriasPasadas = materiasPasadas;
 	}
+	public void ActualizarEstudiante(InformacionMateria materiasPasadas)
+	{
+		MateriasPasadas.add(materiasPasadas);
+	}
 	
-	public boolean Ingles( ) {
+	public boolean Ingles( ) 
+	{
 		/*
 		Mira si cumple con los requisitos de Ingles
 		*/
@@ -37,7 +45,8 @@ public class Estudiante extends Usuario {
 
 
 		}
-		if(RIngles==false) {
+		if(RIngles==false) 
+		{
 			
 				System.out.print("El estudiante no ha cumplido con el requesito de LENG-2999 \n");
 				

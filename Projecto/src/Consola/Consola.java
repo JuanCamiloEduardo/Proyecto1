@@ -10,11 +10,20 @@ import Sistema.Pensum;
 import Sistema.Reader;
 
 public class Consola {
+	private Estudiante Alumno;
+	private Pensum Sistemas;
 	
-	
-	
+	public Pensum getSistemas() {
+		return Sistemas;
+	}
 	static File archivo=new File("Data/PENSUM.csv");
-
+	
+	public void CrearPensum() 
+	{	
+		Reader lector=new Reader();
+		ArrayList<InformacionMateria> ListadoMaterias=lector.cargarRecords(archivo);
+		Sistemas=new Pensum(ListadoMaterias);
+	}
 	public static void main(String[] args)
 	{
 		///Metodo Main aca se ejecutan las funciones para el estudiante y cordinador.
@@ -37,8 +46,10 @@ public class Consola {
 			ArrayList<InformacionMateria> ListadoMaterias=lector.cargarRecords(archivo);
 			ArrayList<String> nuevo= new ArrayList<String>();
 			Pensum Sistemas=new Pensum(ListadoMaterias);
-			Estudiante Alumno=CodigoMaterias(Sistemas);
-
+			//////////////////////////////////
+			String CodigosREW = null;
+			Estudiante Alumno=null/*CodigoMaterias(Sistemas,CodigosREW)*/;
+			/////////////////////////////////
 			boolean repetidor2=true;
 			do {
 
@@ -166,6 +177,12 @@ public class Consola {
 	
 	
 	
+	public Estudiante getAlumno() 
+	{
+		return Alumno;
+	}
+
+
 	public static void planearhorarioPrerequisitos(ArrayList<InformacionMateria> materiasPasadas,ArrayList<InformacionMateria> Pensum,ArrayList<String> CodigosPlaneados  ) 
 	{	/*
 	Esta funcion es la que se encarga de revisar si cumplimos con los correquisitos al planear  una materia
@@ -397,7 +414,7 @@ public class Consola {
 			Alumno.getMateriasPasadas().add(recoger);
 		}
 	}
-	public static Estudiante CodigoMaterias(Pensum materiasPensum) 
+	public  void CodigoMaterias(Pensum materiasPensum,String Codigos) 
 	
 	{   
 		/* En esta funcion se utilizan los contructores de Pensum para crear una arraylist con las materias que el estudiante ha visto
@@ -414,21 +431,21 @@ public class Consola {
 		InformacionMateria SistemasEmpresariales=new InformacionMateria(3,"Sistemas Empresariales","ISIS3425",ListaS,listavacia,16,6,0);
         ////Creamos unas materias para cumplir el pensum
 		
-		Scanner sc = new Scanner (System.in);
+		/*Scanner sc = new Scanner (System.in);
 		System.out.print("Digite los codigos de las materias que ha visto separadas por coma  (MATE-1203:Semestre:Nota,MATE-1504:Semestre:Nota,....) ");
-		String Codigos=sc.nextLine();
+		String Codigos=sc.nextLine();*/
 	
-		String[] ListaCodigos=Codigos.split(",");
+		/*String[] ListaCodigos=Codigos.split(",");*/
 		///Obtenemos una lista de este tipo["MATE-1203:Semestre:Nota","MATE-1504:Semestre:Nota","MATE-1804:Semestre:Nota"]
 		ArrayList<InformacionMateria> MateriasEstudiante=new ArrayList<InformacionMateria>() ;
 		for (int j = 0; j < materiasPensum.getMateriasPensum().size(); j++)
 		{
 		String Codigo =materiasPensum.getMateriasPensum().get(j).getCodigo();
-		
-		int i = 0;
+		/*int i = 0;
 		while (i < ListaCodigos.length)
 		{	
-			String[] UbicacionCodigo=ListaCodigos[i].split(":");
+			String[] UbicacionCodigo=ListaCodigos[i].split(":");*/
+		String[] UbicacionCodigo=Codigos.split(",");
 		if (Codigo.equals(UbicacionCodigo[0])||UbicacionCodigo[0].substring(0,5).equals(Codigo))
 		{
 		InformacionMateria CambioNota=materiasPensum.getMateriasPensum().get(j);
@@ -437,27 +454,70 @@ public class Consola {
 		if( Codigo.equals("MBIO-1100") )
 		{
 			MateriasEstudiante.add(Quimica);}
-		else if (Codigo.equals("QUIM-1103")) {
+		else if (Codigo.equals("QUIM-1103")) 
+		{
 			MateriasEstudiante.add(BiologiaCelular);}
-		if (Codigo.equals("ISIS-3710")) {
+		if (Codigo.equals("ISIS-3710")) 
+		{
 			MateriasEstudiante.add(SistemasEmpresariales);}
-		else if (Codigo.equals("ISIS-3425")) {
+		else if (Codigo.equals("ISIS-3425")) 
+		{
 			MateriasEstudiante.add(ProgramacionConTecnologiasWeb);
 		}
 		MateriasEstudiante.add(CambioNota);
 		
 		}
-		i++; 
+		/*i++; 
 	
-		}
+		}*/
 		
 		}
 
-		Estudiante alumno=new Estudiante(MateriasEstudiante);
-		return alumno;
-
-
+		Alumno=new Estudiante(MateriasEstudiante);
 	}
+	public void ActualizarAlumno(Pensum materiasPensum,String Union)
+	{
+		
+		String[] listavacia = new String[0];
+		InformacionMateria BiologiaCelular=new InformacionMateria(3,"Biología Celular","MBIO-1100",listavacia,listavacia,16,4,0);
+		InformacionMateria Quimica=new InformacionMateria(3,"QUIMICA","QUIM-1103",listavacia,listavacia,16,4,0);
+		String[] ListaP=new String[1];
+		ListaP[0]="ISIS-2503";
+		String[] ListaS=new String[1];
+		ListaS[0]="ISIS-2403";
+		InformacionMateria ProgramacionConTecnologiasWeb=new InformacionMateria(3,"ProgramaciónConTecnologíasWeb","ISIS-3710",ListaP,listavacia,16,6,0);
+		InformacionMateria SistemasEmpresariales=new InformacionMateria(3,"Sistemas Empresariales","ISIS3425",ListaS,listavacia,16,6,0);
+		String[] UbicacionCodigo=Union.split(",");
+		for (int j = 0; j < materiasPensum.getMateriasPensum().size(); j++)
+		{
+		String Codigo =materiasPensum.getMateriasPensum().get(j).getCodigo();
+		if (Codigo.equals(UbicacionCodigo[0])||UbicacionCodigo[0].substring(0,5).equals(Codigo))
+		{
+		InformacionMateria CambioNota=materiasPensum.getMateriasPensum().get(j);
+		CambioNota.setNota(Double.parseDouble(UbicacionCodigo[2]));
+		CambioNota.setSemestre(Integer.parseInt(UbicacionCodigo[1]));
+		if( Codigo.equals("MBIO-1100") )
+		{
+			Alumno.ActualizarEstudiante(Quimica);
+		}
+		else if (Codigo.equals("QUIM-1103")) 
+		{
+			Alumno.ActualizarEstudiante(BiologiaCelular);
+			}
+		if (Codigo.equals("ISIS-3710")) 
+		{
+			Alumno.ActualizarEstudiante(SistemasEmpresariales);
+		}
+		else if (Codigo.equals("ISIS-3425")) 
+		{
+			Alumno.ActualizarEstudiante(ProgramacionConTecnologiasWeb);
+		}
+			Alumno.ActualizarEstudiante(CambioNota);
+		
+		}
+		
+		
+		}
 	
-
+	}
 }
