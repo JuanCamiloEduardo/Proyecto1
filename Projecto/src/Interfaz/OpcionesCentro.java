@@ -1,23 +1,28 @@
 package Interfaz;
 
+import java.awt.Dimension;
 import java.awt.GridLayout;
 
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 public class OpcionesCentro extends JPanel
 {
 	private JLabel MateriasPlaneadas;
-	private JList ListaPlaneadas;
+	private MateriasPlaneadas Planeadas;
+	private MateriasVistas Vistas;
+	private Promedio Promedio;
 	public OpcionesCentro()
 	{
-		setLayout(new GridLayout(2,1));
-		String [] queries = {"Nombre","Nombre","Nombre","Nombre","Nombre" };
-		ListaPlaneadas= new JList(queries);
-		MateriasPlaneadas=new JLabel("Materias Planeadas");
-		add(MateriasPlaneadas);
-		add(ListaPlaneadas);
+		setLayout(new GridLayout(1,3));
+		Planeadas=new MateriasPlaneadas();
+		Vistas= new MateriasVistas();
+		Promedio = new Promedio();
+		add(Vistas);
+		add(Planeadas);
+		add(Promedio);
 		
 	}
 	
