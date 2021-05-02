@@ -31,6 +31,7 @@ public class OpcionesNorte extends JPanel implements ActionListener
 	{
 		VentanaE NuevaVentana= new VentanaE();
 		NuevaVentana.setVisible(true);
+		
 	}
 	
 }

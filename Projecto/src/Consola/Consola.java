@@ -171,7 +171,7 @@ public class Consola {
 	
 	
 	
-	public Estudiante getAlumno() 
+	public static Estudiante getAlumno() 
 	{
 		return Alumno;
 	}

@@ -5,6 +5,7 @@ public class Estudiante extends Usuario {
 	private boolean RSegundoLenguaje;
 	private boolean Rcbus;
 	private boolean RELECTIVAS;
+	private ArrayList<String> RetornoGrado= new ArrayList<String>();
 	private ArrayList<InformacionMateria> MateriasPasadas;
 	
 	public ArrayList<InformacionMateria> getMateriasPasadas() 
@@ -47,13 +48,14 @@ public class Estudiante extends Usuario {
 		}
 		if(RIngles==false) 
 		{
-			
-				System.out.print("El estudiante no ha cumplido con el requesito de LENG-2999 \n");
+				RetornoGrado.add("El estudiante no ha cumplido con el requesito de LENG-2999 ");
+				
 				
 			
 		}
 		else if(RIngles==true) {
-			System.out.print("El estudiante  ha cumplido con el requesito de LENG-2999 \n");
+			RetornoGrado.add("El estudiante  ha cumplido con el requesito de LENG-2999 ");
+			
 		}
 		
 	return RIngles;
@@ -75,10 +77,11 @@ public class Estudiante extends Usuario {
 		}
 		}
 		if (RSegundoLenguaje==false)		{
-			System.out.print("El estudiante no ha cumplido con el requisito de segundo lenguaje(cumplir un curso 10 de idiomas o examen ) \n)");
+
+			RetornoGrado.add("El estudiante no ha cumplido con el requisito de segundo lenguaje(cumplir un curso 10 de idiomas o examen ) )");
 		}
 		else if(RSegundoLenguaje==true) {
-			System.out.print("El estudiante ha cumplido con el requisito de segundo lenguaje(cumplir un curso 10 de idiomas o examen ) \n)");
+			RetornoGrado.add("El estudiante ha cumplido con el requisito de segundo lenguaje(cumplir un curso 10 de idiomas o examen )");
 		}
 		
 	return RSegundoLenguaje;
@@ -123,15 +126,15 @@ public class Estudiante extends Usuario {
 		if (contador>=2)
 		{
 			RELECTIVAS=true;
-			System.out.print("El estudiante cumple con los cursos de libre eleccion \n");
+			RetornoGrado.add("El estudiante cumple con los cursos de libre eleccion");
 		}
 		else if(contador==1)
 		{
-			System.out.print("Al estudiante le hace falta un Curso de Libre Eleccion \n");
+			RetornoGrado.add("Al estudiante le hace falta un Curso de Libre Eleccion");
 		}
 		else
 		{
-			System.out.print("Al estudiante le hace falta dos Cursos de Libre Eleccion \n");
+			RetornoGrado.add("Al estudiante le hace falta dos Cursos de Libre Eleccion");
 		}
 		return RELECTIVAS;
 		
@@ -159,7 +162,7 @@ public class Estudiante extends Usuario {
 		{
 			Rcbus= false;
 			int limite=6-CbusAprobados.size();
-			System.out.print("Al estudiante le hacen falta "+limite+" CBUS \n");
+			RetornoGrado.add("Al estudiante le hacen falta "+limite+" CBUS");
 
 			for (int i = 0; i <CbusAprobados.size(); i++)
 			{	
@@ -205,48 +208,47 @@ public class Estudiante extends Usuario {
 			}
 			if (cbuColombia==false)
 			{
-				System.out.print("Al estudiante le hace falta un CBU tipo Colombia \n ");
-			
+				RetornoGrado.add("Al estudiante le hace falta un CBU tipo Colombia");
 			}
 			else if(cbuColombia==true)
 			{
-				System.out.print("El estudiante ha cumplido con un CBU tipo Colombia \n");
+				RetornoGrado.add("El estudiante ha cumplido con un CBU tipo Colombia");
 			}
 			if (cbucientifico==false)
 			{
-				System.out.print("Al estudiante le hace falta un CBU tipo Pensamiento Cientifico \n");
+				RetornoGrado.add("Al estudiante le hace falta un CBU tipo Pensamiento Cientifico ");
 			}
 			else if(cbucientifico==true)
 			{
-				System.out.print("El estudiante ha cumplido con un CBU tipo Cientifico \n");
+				RetornoGrado.add("El estudiante ha cumplido con un CBU tipo Cientifico ");
 			}
 			if (cbuHumanidades==false)
 			{
-				System.out.print("Al estudiante le hace falta un CBU tipo Artes y Humanidades \n");
+				RetornoGrado.add("Al estudiante le hace falta un CBU tipo Artes y Humanidades ");
 			}
 			else if(cbuHumanidades==true)
 			{
-				System.out.print("El estudiante ha cumplido con un CBU tipo Arte y Humanidades \n");
+				RetornoGrado.add("El estudiante ha cumplido con un CBU tipo Arte y Humanidades ");
 			}
 			if (cbuEpsilon==false)
 			{
-				System.out.print("Al estudiante le hace falta un Curso tipo Epsilon \n");
+				RetornoGrado.add("Al estudiante le hace falta un Curso tipo Epsilon ");
 			}
 			else if(cbuEpsilon==true)
 			{
-				System.out.print("El estudiante ha cumplido con un curso tipo Epsilon \n");
+				RetornoGrado.add("El estudiante ha cumplido con un curso tipo Epsilon ");
 			}
 			if (uno==false)
 			{
-				System.out.print("Al estudiante le hacen falta dos CBUS Tipo E \n" );
+				RetornoGrado.add("Al estudiante le hacen falta dos CBUS Tipo E ");
 			}
 			else if (uno==true)
 			{
-				System.out.print("Al estudiante le hacen falta un CBU Tipo E \n");
+				RetornoGrado.add("Al estudiante le hacen falta un CBU Tipo E ");
 			}
 			else if (cbuTipoE) 
 			{
-				System.out.print("El estudiante ha cumplido con un los CBUS tipo E \n");
+				RetornoGrado.add("El estudiante ha cumplido con un los CBUS tipo E ");
 			}
 
 			
@@ -300,47 +302,48 @@ public class Estudiante extends Usuario {
 				}
 				if (cbuColombia==false)
 				{
-					System.out.print("Al estudiante le hace falta un CBU tipo Colombia \n");
+					RetornoGrado.add("Al estudiante le hace falta un CBU tipo Colombia");
 				}
 				else if(cbuColombia==true)
 				{
-					System.out.print("El estudiante ha cumplido con un CBU tipo Colombia \n");
+					RetornoGrado.add("El estudiante ha cumplido con un CBU tipo Colombia");
 				}
 				if (cbucientifico==false)
 				{
-					System.out.print("Al estudiante le hace falta un CBU tipo Pensamiento Cientifico \n");
+					RetornoGrado.add("Al estudiante le hace falta un CBU tipo Pensamiento Cientifico ");
 				}
 				else if(cbucientifico==true)
 				{
-					System.out.print("El estudiante ha cumplido con un CBU tipo Cientifico \n");
+					RetornoGrado.add("El estudiante ha cumplido con un CBU tipo Cientifico ");
 				}
 				if (cbuHumanidades==false)
 				{
-					System.out.print("Al estudiante le hace falta un CBU tipo Artes y Humanidades \n");
+					RetornoGrado.add("Al estudiante le hace falta un CBU tipo Artes y Humanidades ");
+					
 				}
 				else if(cbuHumanidades==true)
 				{
-					System.out.print("El estudiante ha cumplido con un CBU tipo Humanidades \n");
+					RetornoGrado.add("El estudiante ha cumplido con un CBU tipo Arte y Humanidades ");
 				}
 				if (cbuEpsilon==false)
 				{
-					System.out.print("Al estudiante le hace falta un Curso tipo Epsilon \n");
+					RetornoGrado.add("Al estudiante le hace falta un Curso tipo Epsilon ");
 				}
 				else if(cbuEpsilon==true)
 				{
-					System.out.print("El estudiante ha cumplido con un curso tipo Epsilon \n");
+					RetornoGrado.add("El estudiante ha cumplido con un curso tipo Epsilon ");
 				}
 				if (uno==false)
 				{
-					System.out.print("Al estudiante le hacen falta dos CBUS Tipo E \n");
+					RetornoGrado.add("Al estudiante le hacen falta dos CBUS Tipo E ");
 				}
 				else if (uno==true)
 				{
-					System.out.print("Al estudiante le hacen falta un CBU Tipo E \n");
+					RetornoGrado.add("Al estudiante le hacen falta un CBU Tipo E" );
 				}
 				if(cbuTipoE==true)
-				{
-					System.out.print("El estudiante ha cumplido con los  CBUs tipo E \n" );
+				{	RetornoGrado.add("El estudiante ha cumplido con los  CBUs tipo E" );
+				
 				}
 
 			
@@ -351,7 +354,7 @@ public class Estudiante extends Usuario {
 		if (cbucientifico==true&&  cbuHumanidades==true  && cbuColombia==true  &&  cbuTipoE==true &&cbuEpsilon==true ) {
 			
 			Rcbus= true;
-			System.out.println(Rcbus);
+			
 		}
 		
 		
@@ -382,7 +385,7 @@ public class Estudiante extends Usuario {
 				 if (!codigosaprobados.contains(Codigo)) 
 				 {
 					 cumple=false;
-					 System.out.println("Hace falta la materia:"+Codigo+"\n");
+					RetornoGrado.add("Hace falta la materia:"+Codigo+"\n");
 				 }
 				
 				
