@@ -20,7 +20,7 @@ public class VentanaE extends JDialog {
 	public JList getListaCumplidaos(){
 		return ListaFaltantes;
 	}
-	public VentanaE (ArrayList<String> Cambio) 
+	public VentanaE (ArrayList<String> Cambio,String Nombre) 
 	{
 		setSize(700,400);
 		setLocationRelativeTo(null);
@@ -32,7 +32,7 @@ public class VentanaE extends JDialog {
 		setLayout(new GridLayout(2,1));
 		JScrollPane jsp = new JScrollPane(ListaFaltantes);
 		Graduarse=new JLabel("Puede Graduarse");
-		Puede=new JLabel(Ultimo);
+		Puede=new JLabel("EL estudiante"+" "+Nombre+" "+Ultimo);
 		
 
 		RequisitosFaltantes=new JLabel("Requisitos Faltantes/Cumplidos");

@@ -12,13 +12,18 @@ import Sistema.Reader;
 public class Consola {
 	private static Estudiante Alumno;
 	private static Pensum Sistemas;
-	
+	private static ArrayList<String> ArraySemestres;
+	public static double PGA;
+	public static double Creditos;
 	public Pensum getSistemas() 
 	{
 		return Sistemas;
 	}
 	static File archivo=new File("Data/PENSUM.csv");
 	
+	public static double getCreditos() {
+		return Creditos;
+	}
 	public void CrearPensum() 
 	{	
 		Reader lector=new Reader();
@@ -190,15 +195,51 @@ public class Consola {
 		
 		if (MateriasFaltantes && CBUS && Ingles && SegundaLengua && CURSOLIBRE)
 		{
-			RetornoGrado.add("El estudiante es candidato a grado");
+			RetornoGrado.add(" es candidato a grado");
 		}
 		
 		else
 		{
-			RetornoGrado.add("El estudiante no es candidato a grado");
+			RetornoGrado.add(" no es candidato a grado");
 		}
 		
 		return RetornoGrado ; 
+	}
+	public static void Todo()
+	{	
+		ArraySemestres=new ArrayList<String>();
+		ArrayList<InformacionMateria> Copia=CopiaryEliminar(Alumno.getMateriasPasadas());
+		double TotalPromedioAcumulado=0;
+		double TotalCreditos=0;
+		ArrayList<ArrayList> ListaSemestres=AgregarSemestre(Alumno);
+		for (int i = 0; i <ListaSemestres.size(); i++)
+		{
+			ArrayList<InformacionMateria> Semestre=ListaSemestres.get(i);
+			int TituloSemestre=i+1;
+			double[] Valores= RegistroNotas(Semestre,TituloSemestre);
+			double PromedioAcumulado=Valores[0];
+			double Creditos=Valores[1];
+
+			TotalPromedioAcumulado+=PromedioAcumulado;
+			TotalCreditos+=Creditos;
+			
+		}
+		
+		double NotaFinal=TotalPromedioAcumulado/TotalCreditos;
+		String hola=Double.toString(NotaFinal);
+		Creditos=TotalCreditos;
+		if (hola.equals("NaN")) 
+		{
+			 NotaFinal=0;
+		}
+		PGA=NotaFinal;
+		Devolver(Copia,Alumno);
+	}
+	public static double getPGA() {
+		return PGA;
+	}
+	public static ArrayList<String> getArraySemestres() {
+		return ArraySemestres;
 	}
 	public static ArrayList<String> planearhorarioPrerequisitos(/*ArrayList<InformacionMateria> materiasPasadas,ArrayList<InformacionMateria> Pensum,*/ArrayList<String> CodigosPlaneados  ) 
 	{	/*
@@ -395,14 +436,15 @@ return retorno;}
 		/*
 		 Esta funcion es la que se encarga de calcular el promedio del estudiante y promedio acumulado en todos los semestres que ha visto
 		 */
+		
 		double[] Valores=new double[2];
 		double TotalCreditos=0;
 		int NMaterias=0;
 		double PromedioSemestre=0;
 		double NotaClase=0;
 		double PromedioAcumulado=0;
-		System.out.print("Registro notas del "+TituloSemestre +" semestre \n");
-		System.out.print("Listado materias tomadas en el semestre \n");
+		ArraySemestres.add("Registro notas del "+TituloSemestre +" semestre");
+		ArraySemestres.add("Listado materias tomadas en el semestre");
 		for (int j = 0; j <ListaSemestres.size(); j++)
 		{
 			String CursosTomados=ListaSemestres.get(j).getNombre();
@@ -412,7 +454,7 @@ return retorno;}
 			NMaterias+=1;
 			NotaClase=Nota*CreditosTomados;
 			PromedioSemestre+=NotaClase;
-			System.out.print("Nombre: "+CursosTomados+" Creditos: "+ CreditosTomados+"\n");
+			ArraySemestres.add("Nombre: "+CursosTomados+" Creditos: "+ CreditosTomados);
 		}
 	
 		PromedioSemestre=PromedioSemestre/TotalCreditos;
@@ -424,8 +466,8 @@ return retorno;}
 		PromedioAcumulado=PromedioSemestre*TotalCreditos;
 		Valores[0]=PromedioAcumulado;
 		Valores[1]=TotalCreditos*1.0;
-		System.out.print("Total materias registradas este semestre :"+NMaterias+"  \nTotal creditos: "+TotalCreditos+"\n");
-		System.out.print("Promedio Semestre: "+PromedioSemestre+"\n");
+		ArraySemestres.add("Total materias registradas este semestre :"+NMaterias+"  \nTotal creditos: "+TotalCreditos);
+		ArraySemestres.add("Promedio Semestre: "+PromedioSemestre);
 		return Valores;
 	}
 	public static void Devolver(ArrayList<InformacionMateria> Copia,Estudiante Alumno)

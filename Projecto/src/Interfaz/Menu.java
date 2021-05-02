@@ -64,7 +64,11 @@ public class Menu extends JFrame implements ActionListener {
 		if (comando.equals("Estudiante")) {
 		VentanaEstudiante est=new VentanaEstudiante();
 		est.setVisible(true);
-		frame.setVisible(false);}
+		frame.setVisible(false);
+		Excepciones Nueva=new Excepciones();
+		Nueva.setVisible(true);
+		
+		}
 		
 		else if (comando.equals("Cordinador")) {
 			VistaCordinador cord=new VistaCordinador();

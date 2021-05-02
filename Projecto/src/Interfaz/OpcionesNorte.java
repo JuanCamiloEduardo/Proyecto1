@@ -36,9 +36,9 @@ public class OpcionesNorte extends JPanel implements ActionListener
 	public void actionPerformed(ActionEvent pEvento) 
 	{	
 		ArrayList<String> Cambio=new ArrayList<String>();
-		 Cambio=Consola.SoyCandidato();
-
-		VentanaE NuevaVentana= new VentanaE(Cambio);
+		Cambio=Consola.SoyCandidato();
+		String Nombre=Campo.getText();
+		VentanaE NuevaVentana= new VentanaE(Cambio,Nombre);
 		
 		NuevaVentana.setVisible(true);
 		

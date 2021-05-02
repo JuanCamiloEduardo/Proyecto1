@@ -1,6 +1,9 @@
 package Interfaz;
 
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -8,35 +11,30 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import Consola.Consola;
 
-public class Promedio extends JPanel {
+public class Promedio extends JPanel implements ActionListener {
 	private JButton Promediob;
-	
-	private JLabel Pga;
-	private JLabel semestresegunc;
-	private JLabel PgaR;
-	private JLabel semestreseguncR;
-	private JList creditos;
+	private JButton Excepciones;
 	public Promedio() 
 	{
-		setLayout(new GridLayout(6,1));
+		setLayout(new GridLayout(1,1));
 		Promediob=new JButton("Promedio");
-		Pga=new JLabel("PGA:  ");
-		semestresegunc=new JLabel("Semestre Segun Creditos:  ");
-		PgaR= new JLabel("0");
-		semestreseguncR= new JLabel("0");
-		String [] queries = {"1...","2...","3...","4..."};
-		creditos= new JList(queries);
-		JScrollPane jsp = new JScrollPane(creditos);
+		Promediob.addActionListener(this);
+		Promediob.setActionCommand("Promedio");
 		add(Promediob);
-		add(Pga);
-		add(PgaR);
 
-		add(semestresegunc);
-		add(semestreseguncR);
-		add(jsp);
+
 		
+	}
+	public void actionPerformed(ActionEvent pEvento) 
+	{
+
+		Consola.Todo();
+		ArrayList<String> Promedio=Consola.getArraySemestres();
+		VentanaP Nueva=new VentanaP(Promedio);
+		Nueva.setVisible(true);
 		
-		
+
 	}
 }
