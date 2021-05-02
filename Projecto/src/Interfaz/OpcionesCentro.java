@@ -11,18 +11,15 @@ import javax.swing.JScrollPane;
 public class OpcionesCentro extends JPanel
 {
 	private JLabel MateriasPlaneadas;
-	private MateriasPlaneadas Planeadas;
 	private MateriasVistas Vistas;
 	private Promedio Promedio;
 	public OpcionesCentro()
 	{
-		setLayout(new GridLayout(1,3));
-		Planeadas=new MateriasPlaneadas();
+		setLayout(new GridLayout(1,2));
 		Vistas= new MateriasVistas();
 		Promedio = new Promedio();
 		
 		add(Vistas);
-		add(Planeadas);
 		add(Promedio);
 		
 	}
