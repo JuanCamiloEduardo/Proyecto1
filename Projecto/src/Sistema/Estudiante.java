@@ -8,6 +8,10 @@ public class Estudiante extends Usuario {
 	private ArrayList<String> RetornoGrado= new ArrayList<String>();
 	private ArrayList<InformacionMateria> MateriasPasadas;
 	
+	public ArrayList<String> getRetornoGrado() {
+		return RetornoGrado;
+	}
+
 	public ArrayList<InformacionMateria> getMateriasPasadas() 
 	{
 		return MateriasPasadas;

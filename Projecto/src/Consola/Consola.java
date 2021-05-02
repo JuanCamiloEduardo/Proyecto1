@@ -12,7 +12,7 @@ import Sistema.Reader;
 public class Consola {
 	private static Estudiante Alumno;
 	private static Pensum Sistemas;
-	
+	private static ArrayList<String> RetornoGrado;
 	public Pensum getSistemas() 
 	{
 		return Sistemas;
@@ -110,13 +110,14 @@ public class Consola {
 				if (MateriasFaltantes && CBUS && Ingles && SegundaLengua && CURSOLIBRE)
 				{
 					System.out.print("El estudiante es candidato a grado \n");
+					
 				}
+				
 				else
 				{
 					System.out.print("El estudiante no es candidato a grado \n");
 
 				}
-				
 			}
 			else if (transformacion2==4) 
 			{
@@ -176,7 +177,28 @@ public class Consola {
 		return Alumno;
 	}
 
+	public static ArrayList<String> SoyCandidato()
+	{
+		boolean MateriasFaltantes=Alumno.verificarAvance(Sistemas);
+		boolean CBUS= Alumno.cumplioCbus();
+		boolean Ingles=Alumno.Ingles();
+		boolean SegundaLengua=Alumno.SegundoLenguaje();
+		boolean CURSOLIBRE=Alumno.cumpleCele();
 
+		if (MateriasFaltantes && CBUS && Ingles && SegundaLengua && CURSOLIBRE)
+		{
+			System.out.print("El estudiante es candidato a grado \n");
+			
+		}
+		
+		else
+		{
+			System.out.print("El estudiante no es candidato a grado \n");
+
+		}
+		RetornoGrado=Alumno.getRetornoGrado();
+		return RetornoGrado;
+	}
 	public static ArrayList<String> planearhorarioPrerequisitos(/*ArrayList<InformacionMateria> materiasPasadas,ArrayList<InformacionMateria> Pensum,*/ArrayList<String> CodigosPlaneados  ) 
 	{	/*
 	Esta funcion es la que se encarga de revisar si cumplimos con los correquisitos al planear  una materia
