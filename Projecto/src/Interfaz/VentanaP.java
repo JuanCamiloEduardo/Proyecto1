@@ -18,6 +18,7 @@ public class VentanaP extends JDialog
 	public VentanaP(ArrayList<String> Promedio) 
 	{
 		setLayout(new GridLayout(5,1));
+		setSize(700,400);
 		Pga=new JLabel("PGA:  ");
 		semestresegunc=new JLabel("Total Creditos:  ");
 		PgaR= new JLabel(Consola.getPGA()+"");
