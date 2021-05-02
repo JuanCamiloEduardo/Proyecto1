@@ -10,18 +10,18 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-
+import Consola.Consola;
 import Sistema.Estudiante;
+
 
 public class OpcionesNorte extends JPanel implements ActionListener
 {
 	private JLabel Nombre;
 	private JTextField Campo;
 	private JButton Grado;
-	private ArrayList<String> Alumno;
-	public OpcionesNorte(ArrayList<String> kAlumno) 
+	public OpcionesNorte() 
 	{
-		Alumno=kAlumno;
+
 		setLayout(new GridLayout(1,3));
 		
 		Nombre=new JLabel("Nombre");
@@ -34,11 +34,11 @@ public class OpcionesNorte extends JPanel implements ActionListener
 		add(Grado);
 	}
 	public void actionPerformed(ActionEvent pEvento) 
-	{
-		ArrayList<String> Cambio=Alumno;
-		String[] Lista=Cambio.toArray(new String[Cambio.size()]);
-	
-		VentanaE NuevaVentana= new VentanaE(Lista);
+	{	
+		ArrayList<String> Cambio=new ArrayList<String>();
+		 Cambio=Consola.SoyCandidato();
+
+		VentanaE NuevaVentana= new VentanaE(Cambio);
 		
 		NuevaVentana.setVisible(true);
 		

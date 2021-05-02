@@ -12,7 +12,7 @@ import Sistema.Reader;
 public class Consola {
 	private static Estudiante Alumno;
 	private static Pensum Sistemas;
-	private static ArrayList<String> RetornoGrado;
+	
 	public Pensum getSistemas() 
 	{
 		return Sistemas;
@@ -179,25 +179,26 @@ public class Consola {
 
 	public static ArrayList<String> SoyCandidato()
 	{
+		ArrayList<String> RetornoGrado=Alumno.getRetornoGrado();
+		RetornoGrado.clear();
 		boolean MateriasFaltantes=Alumno.verificarAvance(Sistemas);
 		boolean CBUS= Alumno.cumplioCbus();
 		boolean Ingles=Alumno.Ingles();
 		boolean SegundaLengua=Alumno.SegundoLenguaje();
 		boolean CURSOLIBRE=Alumno.cumpleCele();
-
+		RetornoGrado=Alumno.getRetornoGrado();
+		
 		if (MateriasFaltantes && CBUS && Ingles && SegundaLengua && CURSOLIBRE)
 		{
-			System.out.print("El estudiante es candidato a grado \n");
-			
+			RetornoGrado.add("El estudiante es candidato a grado");
 		}
 		
 		else
 		{
-			System.out.print("El estudiante no es candidato a grado \n");
-
+			RetornoGrado.add("El estudiante no es candidato a grado");
 		}
-		RetornoGrado=Alumno.getRetornoGrado();
-		return RetornoGrado;
+		
+		return RetornoGrado ; 
 	}
 	public static ArrayList<String> planearhorarioPrerequisitos(/*ArrayList<InformacionMateria> materiasPasadas,ArrayList<InformacionMateria> Pensum,*/ArrayList<String> CodigosPlaneados  ) 
 	{	/*

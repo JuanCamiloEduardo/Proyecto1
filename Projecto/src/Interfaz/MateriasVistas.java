@@ -21,7 +21,6 @@ public class MateriasVistas extends JPanel {
 	private DefaultListModel model= new DefaultListModel();
 	private int uno = 1;
 	private String largo;
-	private Consola Consol;
 	public MateriasVistas() 
 	{
 		
@@ -48,7 +47,6 @@ public class MateriasVistas extends JPanel {
 		Consola c = new Consola();
 		c.CrearPensum();
 		Pensum materias = c.getSistemas();
-		Consol=c;
 		if(uno==1)
 		{
 			uno=2;
@@ -68,11 +66,6 @@ public class MateriasVistas extends JPanel {
 		model.addElement(Nombre);
 		}
 
-
-
-	public Consola getConsol() {
-		return Consol;
-	}
 		
 	}
 

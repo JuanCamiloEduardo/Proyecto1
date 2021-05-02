@@ -20,7 +20,6 @@ public class VentanaEstudiante extends JFrame{
 	private OpcionesSur sur;
 	private OpcionesCentro centro;
 	private MateriasVistas vistas;
-	private Consola consol;
 	public VentanaEstudiante () 
 	{
 		setSize(700,400);
@@ -28,15 +27,14 @@ public class VentanaEstudiante extends JFrame{
 		setLocationRelativeTo(null);
 		setTitle("Vista Estudiante");
 		setLayout(new BorderLayout());
-
+		norte = new OpcionesNorte();
+		add(norte,BorderLayout.NORTH);
 		centro = new OpcionesCentro();
 		add(centro,BorderLayout.CENTER);
 		vistas=centro.getVistas();
 		sur = new OpcionesSur(vistas);
-		add(sur,BorderLayout.SOUTH);		
-		ArrayList<String> Hola=consol.SoyCandidato();
-		norte = new OpcionesNorte(Hola);
-		add(norte,BorderLayout.NORTH);
+		add(sur,BorderLayout.SOUTH);		;
+
 		
 		
 		/*oeste = new OpcionesOeste();

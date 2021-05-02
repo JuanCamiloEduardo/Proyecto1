@@ -3,6 +3,7 @@ package Interfaz;
 import java.awt.BorderLayout;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.util.ArrayList;
 
 import javax.swing.JDialog;
 import javax.swing.JLabel;
@@ -12,31 +13,34 @@ import javax.swing.JTextField;
 
 public class VentanaE extends JDialog {
 	private JLabel Graduarse;
-	private JTextField Puede;
+	private JLabel Puede;
 	private JLabel RequisitosFaltantes;
 	private JList ListaFaltantes;
 
 	public JList getListaCumplidaos(){
 		return ListaFaltantes;
 	}
-	public VentanaE (String[] Lista) 
+	public VentanaE (ArrayList<String> Cambio) 
 	{
 		setSize(700,400);
 		setLocationRelativeTo(null);
 		setTitle("Requisitos Grado");
+		String Ultimo=Cambio.get(Cambio.size()-1);
+		Cambio.remove(Cambio.size()-1);
+		String[] Lista=Cambio.toArray(new String[Cambio.size()]);
 		ListaFaltantes= new JList(Lista);
 		setLayout(new GridLayout(2,1));
 		JScrollPane jsp = new JScrollPane(ListaFaltantes);
 		Graduarse=new JLabel("Puede Graduarse");
-		Puede=new JTextField();
+		Puede=new JLabel(Ultimo);
 		
 
-		RequisitosFaltantes=new JLabel("Requsitos Faltantes/Cumplidos");
+		RequisitosFaltantes=new JLabel("Requisitos Faltantes/Cumplidos");
 		add(Graduarse);
 		add(Puede);
 		add(RequisitosFaltantes);
 		add(jsp);
-
+		
 
 
 	}
