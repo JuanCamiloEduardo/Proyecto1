@@ -21,7 +21,7 @@ public class Excepciones extends JDialog
 	private JList Lista;
 	public Excepciones() 
 	{
-		setSize(700,400);
+		setSize(1000,400);
 		setLocationRelativeTo(null);
 		setTitle("Excepciones");
 		setLayout(new GridLayout(2,1));
