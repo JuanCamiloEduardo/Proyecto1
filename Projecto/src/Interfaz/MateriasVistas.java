@@ -43,7 +43,8 @@ public class MateriasVistas extends JPanel {
 	
 
 
-	public void Actualizar(String Union) {
+	public void Actualizar(String Union)
+	{
 		Consola c = new Consola();
 		c.CrearPensum();
 		Pensum materias = c.getSistemas();
@@ -59,13 +60,15 @@ public class MateriasVistas extends JPanel {
 		c.CodigoMaterias(largo);
 		Estudiante Informacion = c.getAlumno();
 		ArrayList<InformacionMateria> Materias = Informacion.getMateriasPasadas();
-		int tamano = Materias.size();
-		InformacionMateria Info = Materias.get(tamano - 1);
-		String Nombre = Info.getNombre();
 		DefaultListModel model=(DefaultListModel) ListaPlaneadas.getModel();
-		model.addElement(Nombre);
+		model.clear();
+		for (int j=0;j<Materias.size();j++)
+		{
+			InformacionMateria fr = Materias.get(j);
+			String tr = fr.getNombre();
+			model.addElement(tr);
 		}
 
-		
 	}
+}
 
