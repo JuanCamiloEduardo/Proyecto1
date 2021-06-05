@@ -487,9 +487,14 @@ return retorno;}
 		/* En esta funcion se utilizan los contructores de Pensum para crear una arraylist con las materias que el estudiante ha visto
 		 
 		 */
+		boolean uno=false;
+		boolean dos=false;
 		String[] listavacia = new String[0];
 		InformacionMateria BiologiaCelular=new InformacionMateria(3,"Biología Celular","MBIO-1100",listavacia,listavacia,16,4,0);
 		InformacionMateria Quimica=new InformacionMateria(3,"QUIMICA","QUIM-1103",listavacia,listavacia,16,4,0);
+		String[] ListaOI=new String[1];
+		ListaOI[0]="ISIS-1221";
+		InformacionMateria MEL=new InformacionMateria(3,"Matemática Estructural y Lógica","ISIS-1104",ListaOI,listavacia,16,2,0);
 		String[] ListaP=new String[1];
 		ListaP[0]="ISIS-2503";
 		String[] ListaS=new String[1];
@@ -516,13 +521,29 @@ return retorno;}
 		CambioNota.setSemestre(Integer.parseInt(UbicacionCodigo[1]));
 		if( Codigo.equals("MBIO-1100") )
 		{
-			MateriasEstudiante.add(Quimica);}
-		else if (Codigo.equals("QUIM-1103")) {
-			MateriasEstudiante.add(BiologiaCelular);}
+			MateriasEstudiante.add(Quimica);
+		}
+
+		else if (Codigo.equals("QUIM-1103") ) 
+		{
+			MateriasEstudiante.add(BiologiaCelular);
+		}
 		if (Codigo.equals("ISIS-3710")) {
 			MateriasEstudiante.add(SistemasEmpresariales);}
 		else if (Codigo.equals("ISIS-3425")) {
 			MateriasEstudiante.add(ProgramacionConTecnologiasWeb);
+		}
+		if(Codigo.equals("ISIS-1101"))
+		{
+			uno=true;
+					}
+		if (Codigo.equals("ISIS-1102") )
+		{
+			dos=true;	
+		}
+		if(uno && dos)
+		{
+			MateriasEstudiante.add(MEL);
 		}
 		MateriasEstudiante.add(CambioNota);
 		

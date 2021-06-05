@@ -56,6 +56,7 @@ public class MateriasVistas extends JPanel {
 		else if(uno!=1)
 		{
 			largo=largo+","+Union;
+			
 		}
 		c.CodigoMaterias(largo);
 		Estudiante Informacion = c.getAlumno();
