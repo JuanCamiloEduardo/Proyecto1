@@ -30,7 +30,7 @@ public class Reader {
 				while (linea != null)
 				{
 					String[] partes = linea.split("/");
-					int Creditos = Integer.parseInt(partes[0]);
+					double Creditos = Double.parseDouble(partes[0]);
 					String Nombre = partes[1];
 					String Codigo = partes[2];
 					String Prerrequisitos = partes[3];

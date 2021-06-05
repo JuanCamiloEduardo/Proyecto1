@@ -11,9 +11,17 @@ import Sistema.Reader;
 
 public class Consola {
 	private static Estudiante Alumno;
+	private static boolean Vacaciones=false;
 	private static Pensum Sistemas;
+	private static int Sem;
+	public static boolean isVacaciones() {
+		return Vacaciones;
+	}
+	public static void setVacaciones(boolean vacaciones) {
+		Vacaciones = vacaciones;
+	}
 	private static ArrayList<String> ArraySemestres;
-	public static double PGA;
+	public static double PGA=0;
 	public static double Creditos;
 	public Pensum getSistemas() 
 	{
@@ -234,6 +242,17 @@ public class Consola {
 		}
 		PGA=NotaFinal;
 		Devolver(Copia,Alumno);
+		if(Vacaciones)
+		{
+			for (int k = 0; k <Alumno.getMateriasPasadas().size(); k++)
+			{
+				int Mayor=Alumno.getMateriasPasadas().get(k).getSemestre();
+				if (Mayor==Sem)
+				{
+					Alumno.getMateriasPasadas().get(k).setSemestre(-1);
+				}
+			}
+		}
 	}
 	public static double getPGA() {
 		return PGA;
@@ -383,10 +402,15 @@ return retorno;}
 		 */
 		//
 		int NumerosListas=0;
-		
+		int si=0;
 		for (int i = 0; i <Alumno.getMateriasPasadas().size(); i++)
 		{
 			int Mayor=Alumno.getMateriasPasadas().get(i).getSemestre();
+			if (Mayor==-1)
+			{
+				Vacaciones=true;
+				si=1;
+			}
 			if (Mayor>NumerosListas)
 			{
 				
@@ -394,6 +418,19 @@ return retorno;}
 			}
 		}
 		
+		NumerosListas=NumerosListas+si;
+		Sem=NumerosListas;
+		if (Vacaciones)
+		{
+			for (int k = 0; k <Alumno.getMateriasPasadas().size(); k++)
+			{
+				int Mayor=Alumno.getMateriasPasadas().get(k).getSemestre();
+				if (Mayor==-1)
+				{
+					Alumno.getMateriasPasadas().get(k).setSemestre(NumerosListas);
+				}
+			}
+		}
 		ArrayList<ArrayList>Semestres=new ArrayList<ArrayList>()	; 
 		for (int j = 0; j <NumerosListas; j++)
 		{
@@ -518,6 +555,10 @@ return retorno;}
 		{
 		InformacionMateria CambioNota=Sistemas.getMateriasPensum().get(j);
 		CambioNota.setNota(Double.parseDouble(UbicacionCodigo[2]));
+		if (UbicacionCodigo[1].equals("Vacaciones") || UbicacionCodigo[1].equals("Intersemestral"))
+		{
+			UbicacionCodigo[1]="-1";
+		}
 		CambioNota.setSemestre(Integer.parseInt(UbicacionCodigo[1]));
 		if( Codigo.equals("MBIO-1100") )
 		{

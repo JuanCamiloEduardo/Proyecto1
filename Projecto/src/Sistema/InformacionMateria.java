@@ -6,7 +6,7 @@ public class InformacionMateria {
 	
 
 
-	protected int Creditos;
+	protected double Creditos;
 	protected String Nombre;
 	protected String Codigo;
 	protected String[] Prerequisitos;
@@ -17,7 +17,7 @@ public class InformacionMateria {
 
 
 
-	public InformacionMateria(int creditos, String nombre, String codigo, String[] prerequisitos,
+	public InformacionMateria(double creditos, String nombre, String codigo, String[] prerequisitos,
 			String[] correquisitos, int duracionSemestre, int semestre, double nota) {
 		super();
 		Creditos = creditos;
@@ -40,7 +40,7 @@ public class InformacionMateria {
 	}
 
 
-	public int getCreditos() {
+	public double getCreditos() {
 		return Creditos;
 	}
 

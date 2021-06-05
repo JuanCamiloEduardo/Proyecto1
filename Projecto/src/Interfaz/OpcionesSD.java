@@ -46,10 +46,12 @@ public class OpcionesSD extends JPanel  implements ActionListener {
 		
 		if(comando.equals("Planear"))
 		{
+			
 			ArrayList<String> requisitos=Consola.splitplanear(largo);
 			String[] Lista=requisitos.toArray(new String[requisitos.size()]);
 			Requisitos dialog = new Requisitos(Lista);
 			dialog.setVisible(true);
+
 		}	
 		else if (comando.equals("Registrar"))
 		{
@@ -58,6 +60,7 @@ public class OpcionesSD extends JPanel  implements ActionListener {
 			if (uno==1)
 			{
 				 largo=ACodigo;
+				 uno+=1;
 			}
 			else
 			{
