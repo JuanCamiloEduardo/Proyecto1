@@ -65,6 +65,7 @@ public class OpcionesSD extends JPanel  implements ActionListener {
 			else
 			{
 				 largo=largo+","+ACodigo;
+				
 			}
 			
 		}

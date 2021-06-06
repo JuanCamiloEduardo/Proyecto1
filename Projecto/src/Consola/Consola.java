@@ -522,13 +522,15 @@ return retorno;}
 	
 	{   
 		/* En esta funcion se utilizan los contructores de Pensum para crear una arraylist con las materias que el estudiante ha visto
-		 
 		 */
 		boolean uno=false;
 		boolean dos=false;
 		String[] listavacia = new String[0];
 		InformacionMateria BiologiaCelular=new InformacionMateria(3,"Biología Celular","MBIO-1100",listavacia,listavacia,16,4,0);
 		InformacionMateria Quimica=new InformacionMateria(3,"QUIMICA","QUIM-1103",listavacia,listavacia,16,4,0);
+		String[] ListaPI=new String[1];
+		ListaPI[0]="ISIS-1225";
+		InformacionMateria Orientada=new InformacionMateria(3,"Diseño y Programación Orientada a Objetos","ISIS-1226",ListaPI,listavacia,16,4,0);
 		String[] ListaOI=new String[1];
 		ListaOI[0]="ISIS-1221";
 		InformacionMateria MEL=new InformacionMateria(3,"Matemática Estructural y Lógica","ISIS-1104",ListaOI,listavacia,16,2,0);
@@ -546,7 +548,6 @@ return retorno;}
 		for (int j = 0; j < Sistemas.getMateriasPensum().size(); j++)
 		{
 		String Codigo =Sistemas.getMateriasPensum().get(j).getCodigo();
-		
 		int i = 0;
 		while (i < ListaCodigos.length)
 		{	
@@ -564,20 +565,26 @@ return retorno;}
 		{
 			MateriasEstudiante.add(Quimica);
 		}
-
 		else if (Codigo.equals("QUIM-1103") ) 
 		{
 			MateriasEstudiante.add(BiologiaCelular);
 		}
 		if (Codigo.equals("ISIS-3710")) {
 			MateriasEstudiante.add(SistemasEmpresariales);}
-		else if (Codigo.equals("ISIS-3425")) {
+		else if (Codigo.equals("ISIS-3425")) 
+		{
+			
+
 			MateriasEstudiante.add(ProgramacionConTecnologiasWeb);
+		}
+		if(Codigo.equals("ISIS-1206") && Integer.parseInt(UbicacionCodigo[1])>=3 )
+		{
+			MateriasEstudiante.add(Orientada);
 		}
 		if(Codigo.equals("ISIS-1101"))
 		{
 			uno=true;
-					}
+		}
 		if (Codigo.equals("ISIS-1102") )
 		{
 			dos=true;	
@@ -600,9 +607,37 @@ return retorno;}
 
 
 	}
-	public static  ArrayList<String> splitplanear(String CargarMaterias)
+	public static  ArrayList<String> splitplanear(String Cargar)
 	{
-		 String[] ListaCodigos=CargarMaterias.split(",");
+		 String[] ListaCodigos=Cargar.split(",");
+		 double Creditos=0;
+		 String CargarMaterias=ListaCodigos[0];
+		 boolean uno=false;
+		 for (int k = 0; k <ListaCodigos.length; k++)
+		 {
+			 String Hola2=ListaCodigos[k];
+			 for (int j = 0; j <Sistemas.getMateriasPensum().size() ; j++)
+			 {
+				 InformacionMateria HOla=Sistemas.getMateriasPensum().get(j);
+				 if(HOla.getCodigo().equals(Hola2))
+				 {
+					double Total=HOla.getCreditos();
+					Creditos=Total+Creditos;
+					 if (Vacaciones && Creditos<25 && uno)
+					 {
+						 CargarMaterias=CargarMaterias+","+Hola2;
+					 }
+					 else if (Creditos<20.5 && uno)
+					 {
+						 CargarMaterias=CargarMaterias+","+Hola2;
+					 }
+					 uno=true;
+					 
+				 }
+			 }
+			
+		 }
+		 		 ListaCodigos=CargarMaterias.split(",");
 				 ArrayList<String> Codigos= new  ArrayList<String>();
 				 for (int k = 0; k < ListaCodigos.length; k++)
 				 {
